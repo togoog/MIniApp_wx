@@ -1,0 +1,56 @@
+<!--pages/share/share.wxml-->
+<scroll-view scroll-y style="height:{{winheight}}px;" >
+  <!-- <view wx:for="{{longPic}}">
+  <image  class='sharepic' mode='aspectFill'  src='{{item}}'></image>
+</view>
+  <view wx:for="{{longvideo}}">
+    <video objectFit="fill" id="myVideo1" src="{{item}}" controls="{{true}}"></video> 
+</view> -->
+  <view class='template' catchtap='gotoseeBigpic' data-index='{{index}}' data-mymain='{{item.myMain}}' wx:for="{{longPic}}">
+    <image class='sharepic' mode='aspectFill' src='{{item.thumbnail}}'></image>
+      <icon wx:if="{{item.myMain == 4}}"></icon>  
+  </view>
+</scroll-view>
+<block wx:if='{{innerApp}}'>
+<view class='footMenu'>
+  <!-- <view>
+    <image class='downloadicon' src='http://oibl5dyji.bkt.clouddn.com/20171023164001.png'></image>
+    保存到本地
+   </view>  -->
+  <view>
+    <button class='shareRadio' hover-class='none' open-type='share'>
+      <image class='sharetoU' src='http://oibl5dyji.bkt.clouddn.com/20171023164002.png'></image>
+      分享给好友
+    </button>
+  </view>
+</view>
+</block>
+<block wx:else>
+<view class='outfootMenu'>
+ <view>
+    <button class='outshareRadio'  hover-class='none' open-type='share'> 
+   <image class='outsharetoU' src='http://oibl5dyji.bkt.clouddn.com/20171023164002.png'></image>
+    分享到微信
+    </button> 
+   </view>
+   <view catchtap='gotodetails'>
+    <image class='outseedetail' src='http://oibl5dyji.bkt.clouddn.com/20171023174114.png'></image>
+    查看相册
+   </view> 
+  
+</view>
+</block>
+<!--点击查看视频  -->
+<block wx:if="{{toseeVideo}}">
+  <view class='seeVideo'>
+    <view class='videobox'>
+      <video fixed="true" src="{{videoUrl}}"></video>
+      <image catchtap='closeSeeVideo' class='closeSeeVideo' src='http://oibl5dyji.bkt.clouddn.com/20171027110629.png'></image>
+    </view>
+  </view>
+</block>
+
+<!-- 反回首页的按钮 -->
+  <view class="toGoHome {{showTop ? 'home1' : ''}}" catchtap="goHome">
+    <image src="http://oibl5dyji.bkt.clouddn.com/20171024113030.png"></image>
+  </view>

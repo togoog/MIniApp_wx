@@ -1,0 +1,61 @@
+<!--pages/personal/personal.wxml-->
+<view class='topInfo'>
+  <view class='myImg'>
+    <image mode='aspectFill' src='{{upic}}'></image>
+  </view>
+  <view class='textInfo'>
+    <view class='name_RAM'>
+      <view class='nickName'>
+        <text>{{unickname}}</text>
+      </view>
+      <view class='RAM'> 
+          <text>{{useStorage}}G/{{totalStorage}}G</text>
+      </view>
+    </view>
+    <view class='progress'>
+      <progress percent='{{useStorage/totalStorage*100}}' active='true' activeColor="#fae100" backgroundColor="#cecece"></progress>
+    </view>
+    <view catchtap='gotoWalfare' class='free'>
+      免费获取更多容量
+      <image src='http://oibl5dyji.bkt.clouddn.com/20171022134401.png'></image>
+    </view>
+  </view>
+</view>
+
+<view class='menu'>
+    <view catchtap='toAnotherApp'>
+      <image src='http://oibl5dyji.bkt.clouddn.com/20171024154110.png'></image>
+      <text>进入忆年共享相册</text>
+      <image src='http://oibl5dyji.bkt.clouddn.com/20171022134402.png'></image>
+    </view>
+    <view catchtap='gotogrouplist'>
+      <image src='http://oibl5dyji.bkt.clouddn.com/20171022134405.png'></image>
+      <text>我的相册</text>
+      <image src='http://oibl5dyji.bkt.clouddn.com/20171022134402.png'></image>
+    </view>
+    <view catchtap='gotophotowall'>
+      <image src='http://oibl5dyji.bkt.clouddn.com/20171022134404.png'></image>
+      <text>我的照片</text>
+      <image src='http://oibl5dyji.bkt.clouddn.com/20171022134402.png'></image>
+    </view>
+     <!-- <view>
+      <image src='http://oibl5dyji.bkt.clouddn.com/20171022134403.png'></image>
+      <text>我的个人云相册</text>
+      <image src='http://oibl5dyji.bkt.clouddn.com/20171022134402.png'></image>
+    </view> -->
+     <!-- <view>
+      <image src='http://oibl5dyji.bkt.clouddn.com/20171022134407.png'></image>
+      <text>仅WIFI下传输</text>
+      <switch color="#fae100" checked='{{checked}}' bindchange="switchChange"/>
+    </view> -->
+</view>
+
+<view class='foot'>
+    <view class='company'>
+      <view>忆年共享相册V1.版</view>
+      <view>武汉追忆那年网络科技有限公司</view>
+    </view>
+    <view catchtap='gotoindex' class='close'>
+      <image src='http://oibl5dyji.bkt.clouddn.com/20171022134406.png'></image>
+    </view>
+</view>

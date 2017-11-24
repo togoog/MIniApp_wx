@@ -1,0 +1,178 @@
+ <!--index.wxml-->
+<view class='v-container'>
+  <!-- 轮播模式 -->
+   <block wx:if='{{Carousel}}'> 
+    <view class="idx-container" >
+      <view class="titleSliderBox">
+        <view class="sliderTitle {{classArr[index].title}}" data-titleIndex='{{index}}' wx:for="{{imgArr}}" wx:key="{{index}}">
+          <view class="groupName">
+            <text data-index='{{index}}'>{{item.gname}}</text>
+            <!--是否具有修改相册名的权限  -->
+            <!-- <block wx:if="{{myid == item.gcreator}}">
+              <image data-groupid='{{item.groupid}}' data-editIndex='{{index}}'  catchtap='edit' src="http://oibl5dyji.bkt.clouddn.com/20171020112408.png"></image>
+            </block> -->
+          </view>
+          <view class="groupDetail">
+            <image src="http://oibl5dyji.bkt.clouddn.com/20171020112401.png"></image>
+            <text>{{item.gnum}}</text>
+            <image src="http://oibl5dyji.bkt.clouddn.com/20171020112402.png"></image>
+            <text>{{item.gpicnum}}</text>
+          </view>
+        </view>
+      </view>
+      <view class="imgSliderBox">
+        <view class="sliderImg {{classArr[index].pic}}" wx:for="{{imgArr}}" wx:key="{{index}}">
+          <image data-groupid='{{item.groupid}}' data-index="{{index}}" catchtap='gotodetails' bindtouchstart="changestart" bindtouchmove="changemove" bindtouchend="changend" mode="aspectFill" src="{{item.simAppPic}}"></image>
+          <image wx:if="{{item.isTop == true || item.isTop == 'yes' }}" data-groupid='{{item.groupid}}' data-index="{{index}}" catchtap='makeTop' id="Carousel-like" src="http://oibl5dyji.bkt.clouddn.com/20171020112403.png"></image>
+          <image wx:else class="selectRadio" data-groupid='{{item.groupid}}' catchtap='makeTop' data-index="{{index}}" id="Carousel-like" src="http://oibl5dyji.bkt.clouddn.com/20171020112404.png"></image>
+        </view>
+      </view>
+    </view>
+    </block>  
+  <!-- 瀑布流模式 -->
+     <block wx:else> 
+     <scroll-view scroll-y style='height:100%' >
+      <view class='waterfall-box'>
+        <view wx:for="{{imgArr}}" wx:key="{{index}}" class='waterfall-template'>
+          <image wx:if="{{item.isTop == true || item.isTop == 'yes'}}" data-groupid='{{item.groupid}}' catchtap='makeTop' data-index="{{index}}" class="waterfall-like" src="http://oibl5dyji.bkt.clouddn.com/20171020112403.png"></image>
+          <image wx:else class="selectRadio" data-groupid='{{item.groupid}}' catchtap='makeTop' data-index="{{index}}" class="waterfall-like" src="http://oibl5dyji.bkt.clouddn.com/20171020112404.png"></image>
+
+          <image class='waterfall-cover' data-groupid='{{item.groupid}}' catchtap='gotodetails' mode='aspectFill' src='{{item.simAppPic}}'></image>
+          <view class='waterfall-title'>{{item.gname}}</view>
+        </view>
+      </view>
+    </scroll-view>
+    </block>     
+  <!-- 底部菜单栏 -->
+  <view class='menu'>
+    <view catchtap='gotopersonal'>
+      <image class='myInfo' src='http://oibl5dyji.bkt.clouddn.com/20171020112405.png'></image>
+    </view>
+    <view catchtap='addpicRadio'>
+      <image class='uploadpic' src='http://oibl5dyji.bkt.clouddn.com/20171020112409.png'></image>
+    </view>
+    <view catchtap='switchModel'>
+      <image class='switch' src="http://oibl5dyji.bkt.clouddn.com/{{Carousel?'20171020112406':'20171020112407'}}.png"></image>
+    </view>
+
+  </view>
+  <!--点击加号弹出模态框-->
+  <view class="pvModel" wx:if="{{pvShowModel}}">
+    <view class="pvModel-box" catchtap="closepvModel">
+      <view class="pvModel-main">
+        <view class="mainItem" catchtap="uploadpic" data-pic="pai">
+          <text>拍照片</text>
+        </view>
+        <view class="mainItem" catchtap="uploadpic" data-pic="phone" style="margin-bottom:16rpx;">
+          <text>相册照片</text>
+        </view>
+        <view class="mainItem" catchtap="uploadvideo" data-video="pai">
+          <text>拍视频</text>
+        </view>
+        <view class="mainItem" catchtap="uploadvideo" data-video="phone" style="margin-bottom:16rpx;">
+          <text>相册视频</text>
+        </view>
+        <view class="mainItem">
+          <image src="http://oibl5dyji.bkt.clouddn.com/20170927152721.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+</view>
+<block wx:if="{{Mengcen}}">
+
+  <view class="Mengcen">
+    <view class='change'>
+      <view class='tip'>相册标题</view>
+      <form report-submit="true" bindsubmit="submitfun">
+        <view class="input_section">
+          <input bindinput="setcolor" focus='true' value="{{value}}" class="inputerea" name="groupname" placeholder-style="color:#999" placeholder="新相册名称" maxlength="8" />
+          <text>{{textNum}}/8</text>
+        </view>
+        <view class='cancel_confirm'>
+          <view class="btn-area">
+            <button class="cancel" catchtap='cancel'>取消</button>
+          </view>
+          <view class="btn-area">
+            <button class="submit" formType="submit">确认</button>
+          </view>
+        </view>
+      </form>
+    </view>
+  </view>
+</block>
+<!-- loading -->
+<block wx:if="{{loading}}">
+<view class='loading'>
+  <image mode='aspectFill' src='http://oibl5dyji.bkt.clouddn.com/loading.gif'></image>
+</view>
+</block>
+
+
+<!-- "indexhtml":"personalhtml" -->
+
+<!--pages/personal/personal.wxml-->
+<!-- <block wx:if='{{personal}}'>  -->
+<view class='indexhtml {{ gotopersonal ? "personalhtml":""}}'>
+  <view class='topInfo'>
+    <view class='myImg'>
+      <image mode='aspectFill' src='{{upic}}'></image>
+    </view>
+    <view class='personaltextInfo'>
+      <view class='name_RAM'>
+        <view class='nickName'>
+          <text>{{unickname}}</text>
+        </view>
+        <view class='RAM'>
+          <text>{{useStorage}}G/{{totalStorage}}G</text>
+        </view>
+      </view>
+      <view class='progress'>
+        <progress percent='{{useStorage/totalStorage*100}}' active='true' activeColor="#fae100" backgroundColor="#cecece"></progress>
+      </view>
+      <view catchtap='gotoWalfare' class='free'>
+        免费获取更多容量
+        <image src='http://oibl5dyji.bkt.clouddn.com/20171022134401.png'></image>
+      </view>
+    </view>
+  </view>
+
+  <view class='personalmenu'>
+    <view catchtap='toAnotherApp'>
+      <image src='http://oibl5dyji.bkt.clouddn.com/20171024154110.png'></image>
+      <text>进入专业版相册</text>
+      <image src='http://oibl5dyji.bkt.clouddn.com/20171022134402.png'></image>
+    </view>
+    <view catchtap='gotogrouplist'>
+      <image src='http://oibl5dyji.bkt.clouddn.com/20171022134405.png'></image>
+      <text>我的相册</text>
+      <image src='http://oibl5dyji.bkt.clouddn.com/20171022134402.png'></image>
+    </view>
+    <view catchtap='gotophotowall'>
+      <image src='http://oibl5dyji.bkt.clouddn.com/20171022134404.png'></image>
+      <text>我的照片</text>
+      <image src='http://oibl5dyji.bkt.clouddn.com/20171022134402.png'></image>
+    </view>
+    <!-- <view>
+      <image src='http://oibl5dyji.bkt.clouddn.com/20171022134403.png'></image>
+      <text>我的个人云相册</text>
+      <image src='http://oibl5dyji.bkt.clouddn.com/20171022134402.png'></image>
+    </view> -->
+    <!-- <view>
+      <image src='http://oibl5dyji.bkt.clouddn.com/20171022134407.png'></image>
+      <text>仅WIFI下传输</text>
+      <switch color="#fae100" checked='{{checked}}' bindchange="switchChange"/>
+    </view> -->
+  </view>
+
+  <view class='personalfoot'>
+    <view class='personalcompany'>
+      <view>小影相V1.0版</view>
+      <view>分享精彩，留住感动</view>
+    </view>
+    <view catchtap='gotoindex' class='personalclose'>
+      <image src='http://oibl5dyji.bkt.clouddn.com/20171022134406.png'></image>
+    </view>
+  </view>
+</view>
+<!-- </block>  -->

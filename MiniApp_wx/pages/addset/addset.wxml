@@ -1,0 +1,23 @@
+<!--pages/setting/addset/addset.wxml-->
+
+<view class="add-container">
+  <view class="addAll" catchtap="changeAll">
+    <text>所有人</text>
+    <image wx:if="{{allState&&state}}" src="http://oibl5dyji.bkt.clouddn.com/20170916215932ed.png"></image>
+    <image wx:else src="http://oibl5dyji.bkt.clouddn.com/20170916215932.png"></image>
+  </view>
+  <view class="addAll" catchtap="changeCreator">
+    <text>管理员</text>
+    <image wx:if="{{onlyCreator&&state}}" src="http://oibl5dyji.bkt.clouddn.com/20170916215932ed.png"></image>
+    <image wx:else src="http://oibl5dyji.bkt.clouddn.com/20170916215932.png"></image>
+  </view>
+  <navigator open-type="redirect" hover-class="none" url="/pages/addmember/addmember">
+  <view class="addAll" style="margin-top:0">
+    <text>指定可添加的人</text>
+    <image class="addmember" src="http://oibl5dyji.bkt.clouddn.com/20170916215931.png"></image>
+  </view>
+  </navigator>
+  <view class="confirmBtn">
+    <view catchtap="release">确认</view>
+  </view>
+</view>

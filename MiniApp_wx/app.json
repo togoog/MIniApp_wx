@@ -1,0 +1,28 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/userphoto/userphoto",
+   "pages/grouplist/grouplist",
+    "pages/choosealbum/choosealbum",
+    "pages/share/share",
+    "pages/demo/demo",
+    "pages/addset/addset",
+    "pages/addmember/addmember",
+   "pages/welfare/invitation/invitation",
+    "pages/memberlist/memberlist",
+    
+    "pages/details/details",
+    "pages/uploadvideo/uploadvideo",
+    "pages/authorization/authorization",
+    "pages/welfare/welfare",
+    "pages/uploadpic/uploadpic",
+    "pages/personal/personal",
+    "pages/albumSet/albumSet"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#fff",
+    "navigationBarTitleText": "小影相",
+    "navigationBarTextStyle": "black"
+  }
+}

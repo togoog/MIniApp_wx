@@ -1,0 +1,44 @@
+<!--pages/Choosealbum/Choosealbum.wxml-->
+<!-- 预览模式 -->
+
+  <scroll-view style='height:100%'>
+    <view class='templatelist'>
+      <view class='creat' data-groupid="{{item.groupid}}"  data-fromType='{{item.fromType}}' data-index="{{index}}" wx:for="{{list}}" catchtap='selsectAlumb'>
+        <view class='photonameleft'>
+          <image class='creatmask' mode='aspectFill' src='{{item.simAppPic}}'></image>
+          <view class='photoname'>{{item.gname}}</view>
+        </view>
+        <image wx:if="{{item.stage == false}}" class='selectRadio' src='http://oibl5dyji.bkt.clouddn.com/2017102902.png'></image>
+        <image wx:else class='selectRadio' src='http://oibl5dyji.bkt.clouddn.com/2017102903.png'></image>
+      </view>
+    </view>
+  </scroll-view>
+
+<form bindsubmit="{{methods}}" report-submit="true">
+  <block wx:if="{{model}}">
+     <!-- <view class='template'>
+      <view wx:for="{{ImgArr}}" class='picBox'>
+        <image mode='aspectFill' class='contentPic' src='{{item}}'></image>
+      </view>
+    </view>  -->
+  </block>
+  <block wx:if="{{models}}">
+    <view class='rightNowUpload'>
+      <!-- <button hover-class='none' disabled='{{disabled}}' formType="submit">{{radioText}}</button>  -->
+      <button hover-class='none' disabled='{{disabled}}' formType="submit" catchtap='{{clicktype}}'>下一步</button>
+    </view>
+  </block>
+</form>
+<block wx:if="{{firstmodels}}">
+  <view catchtap="{{nextStapOrgotoNext}}" class='bottom'>
+    {{firstmodelstext}}
+  </view>
+</block>
+
+  <!-- loading -->
+<block wx:if="{{loading}}">
+<view class='loading'>
+  <image mode='aspectFill' src='http://oibl5dyji.bkt.clouddn.com/loading.gif'></image>
+</view>
+</block>
+

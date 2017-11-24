@@ -1,0 +1,135 @@
+ /* pages/uploadvideo/uploadvideo.wxss */
+
+video{
+   width: 100%; 
+  margin: 0 auto;
+}
+.title{
+  text-align: center;
+  font-family:PingFang-SC-Medium;
+font-size:38rpx;
+color:#333333;
+letter-spacing:0;
+font-weight: 500;
+margin-top: 60rpx;
+}
+.uploadText{
+margin-top: 68rpx;
+font-family:PingFangSC-Regular;
+font-size:32rpx;
+color:#666666;
+letter-spacing:0;
+text-align: center;
+}
+.progress{
+  width: 540rpx;
+  margin: 0 auto;
+  margin-top: 20rpx;
+}
+.template{
+display: flex;
+flex-flow: row wrap;
+margin-top: 62rpx;  
+
+}
+.templatelist{
+  display: flex;
+flex-flow: row wrap;
+margin-top: 12rpx; 
+}
+.picBox{
+  margin-top: 12rpx;
+  width:242rpx;
+  height:242rpx;
+  
+}
+.picBox:nth-child(3n-1){
+  margin: 12rpx 12rpx 0 12rpx;
+}
+.contentPic{
+   width:242rpx;
+  height:242rpx;
+
+}
+.rightNowUpload{
+text-align: center;
+font-family:PingFangSC-Regular;
+font-size:36rpx;
+color:#333333;
+letter-spacing:0;
+position: fixed;
+width: 100%;
+bottom: 0;
+}
+button{
+  background:#fae100;
+  border: none;
+  border-radius: 0;
+  height:88rpx;
+  line-height: 88rpx;
+}
+button::after{
+  border: 0;
+}
+
+.creat{
+  padding: 20rpx 20rpx 0rpx 26rpx;
+  display: flex;
+  justify-content: space-between;
+  box-sizing: border-box;
+  width: 100%;
+}
+.creat .creatmask{
+  width: 80rpx;
+  height: 80rpx;
+  vertical-align: middle;
+  margin-top: -6rpx;
+}
+.creat text{
+font-family:PingFangSC-Regular;
+font-size:36rpx;
+color:#666666;
+letter-spacing:0;
+margin-left: 20rpx;
+
+}
+.selectRadio{
+  width: 48rpx;
+  height: 48rpx;
+  vertical-align: middle;
+}
+.template{
+ 
+}
+scroll-view{
+  padding-bottom: 100rpx;
+}
+ .bottom{
+  position: fixed;
+  bottom:0;
+  background:#fae100;
+  width:100%;
+  height:88rpx;
+font-family:PingFangSC-Regular;
+font-size:36rpx;
+color:#333333;
+letter-spacing:0;
+text-align: center;
+line-height: 88rpx;
+} 
+.photonameleft{
+  display: flex;
+}
+.photoname{
+  font-family:PingFangSC-Regular;
+font-size:36rpx;
+color:#666666;
+letter-spacing:0;
+vertical-align: middle;
+overflow: hidden;
+text-overflow:ellipsis;
+white-space: nowrap;
+width: 500rpx;
+margin-left: 20rpx;
+margin-top: 6rpx;
+}

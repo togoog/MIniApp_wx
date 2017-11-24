@@ -1,0 +1,707 @@
+/* pages/details/details.wxss */
+
+.setting {
+  position: absolute;
+  width: 56rpx;
+  height: 56rpx;
+  margin: 26rpx 26rpx 0 0;
+  right: 0rpx;
+  top: 14rpx;
+}
+.loading{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top:0;
+  background-color: white;
+}
+.loading image{
+  width: 298rpx;
+  height: 334rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-60%)
+}
+.setting image {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 36rpx;
+  height: 36rpx;
+  margin: 0 auto;
+}
+
+.albumInfo {
+  margin-top: 78rpx;
+}
+
+.albumInfo .titleInfo {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+}
+
+.titlebox {
+  width: 240rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+}
+
+.albumInfo .titleInfo .title {
+  font-family: PingFang-SC-Medium;
+  font-size: 38rpx;
+  color: #333;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.albumInfo .titleInfo .edit {
+  width: 32rpx;
+  height: 32rpx;
+  margin: 10rpx 0 0 20rpx;
+}
+
+.memberInfo {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  margin-top: 60rpx;
+}
+
+.totalNum {
+  width: 76rpx;
+  height: 76rpx;
+  border-radius: 100%;
+  line-height: 80rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 24rpx;
+  color: #999;
+  letter-spacing: 0;
+  text-align: center;
+  border: 2px solid #eee;
+  margin-right: 4rpx;
+}
+
+.userList image {
+  width: 80rpx;
+  height: 80rpx;
+  border-radius: 100%;
+  margin: 0 8rpx;
+}
+
+button {
+  padding: 0;
+  margin: 0;
+  line-height: normal;
+}
+
+button::after {
+  border: none;
+}
+
+.buttonShare {
+  width: 124rpx;
+  height: 52rpx;
+  margin-top: 14rpx;
+  margin-left: 24rpx;
+}
+
+.buttonShare image {
+  width: 124rpx;
+  height: 52rpx;
+}
+
+.contentInfo {
+  display: flex;
+  margin-top: 42rpx;
+  flex-flow: row wrap;
+  justify-content: space-between;
+  font-size: 28rpx;
+}
+
+.section {
+  width: 38%;
+  box-sizing: border-box;
+  /* text-align: center;  */
+  padding: 20rpx 0 0 0rpx;
+  padding-left: 30rpx;
+}
+
+.allpicicon {
+  width: 22rpx;
+  height: 22rpx;
+  /* vertical-align: middle;  */
+  display: inline-block;
+}
+
+.picker {
+  font-family: PingFangSC-Regular;
+  color: #333;
+  letter-spacing: 0;
+  /* vertical-align: middle; */
+  margin-left: 8rpx;
+  display: inline-block;
+}
+
+.sorticon {
+  width: 24rpx;
+  height: 24rpx;
+  /* vertical-align: middle;  */
+}
+
+.sort {
+  font-family: PingFangSC-Regular;
+  padding: 20rpx 0 0 0;
+  color: #333;
+  letter-spacing: 1rpx;
+  width: 31%;
+  text-align: center;
+  display: inline-block;
+}
+
+.select {
+  font-family: PingFangSC-Regular;
+  padding: 20rpx 0 0 0;
+  color: #333;
+  letter-spacing: 0;
+  width: 31%;
+  text-align: center;
+  box-sizing: border-box;
+  padding-left: 80rpx;
+  display: inline-block;
+}
+
+.select image {
+  width: 24rpx;
+  height: 22rpx;
+  /* vertical-align: middle; */
+  display: inline-block;
+}
+
+.picContent {
+  display: flex;
+  flex-flow: row wrap;
+  margin-top: 8rpx;
+  padding-bottom: 96rpx;
+}
+
+.picbox {
+  width: 242rpx;
+  height: 242rpx;
+  position: relative;
+  margin-top: 12rpx;
+}
+
+.picbox:nth-child(3n-1) {
+  margin: 12rpx 12rpx 0 12rpx;
+}
+
+.photo {
+  width: 242rpx;
+  height: 242rpx;
+}
+
+.selectRadio {
+  width: 36rpx;
+  height: 36rpx;
+  position: absolute;
+  top: 6rpx;
+  right: 14rpx;
+  z-index: 10;
+}
+
+icon {
+  width: 94rpx;
+  height: 60rpx;
+  background: url('http://oibl5dyji.bkt.clouddn.com/20170918140623.png') no-repeat;
+  background-size: 100%;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.normalMenu {
+}
+
+.normalMenu image {
+  width: 116rpx;
+  height: 116rpx;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  bottom: 30rpx;
+}
+
+.editMenu {
+  display: flex;
+  position: fixed;
+  bottom: -1rpx;
+  height: 80rpx;
+  padding: 24rpx 0 0rpx 0;
+  z-index: 10;
+  width: 100%;
+  background-color: white;
+}
+
+/* .editMenu view{
+  line-height: 80rpx;
+} */
+
+.downloadRadio {
+  width: 48rpx;
+  height: 48rpx;
+  margin-left: 98rpx;
+  vertical-align: middle;
+}
+
+.shareRadio {
+  width: 48rpx;
+  height: 50rpx;
+  margin-left: 120rpx;
+  vertical-align: middle;
+}
+
+.del {
+  width: 44rpx;
+  height: 50rpx;
+  margin-left: 120rpx;
+  vertical-align: middle;
+}
+
+.cancel {
+  width: 152rpx;
+  height: 60rpx;
+  margin-left:98rpx;
+  vertical-align: middle;
+}
+
+.nopic {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  margin-top: 130rpx;
+}
+
+.nopic image {
+  width: 432rpx;
+  height:888rpx;
+  margin: 0 auto;
+}
+
+/* 蒙层 */
+
+.Mengcen {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: rgba(0, 0, 0, 0.4);
+  top: 0;
+  z-index: 11;
+}
+
+.change {
+  width: 526rpx;
+  height: 360rpx;
+  background-color: white;
+  margin: 0 auto;
+  margin-top: 130rpx;
+  padding-top: 32rpx;
+  box-sizing: border-box;
+  border-radius: 12px;
+}
+
+.tip {
+  color: #333;
+  font-size: 26rpx;
+  text-align: center;
+}
+
+.input_section {
+  width: 404rpx;
+  margin: 0 auto;
+  font-size: 26rpx;
+  height: 64rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #efeff5;
+  color: #333;
+  margin-top: 66rpx;
+  border-radius: 8px;
+}
+
+.input_section text {
+  font-size: 24rpx;
+  color: #999;
+  margin-right: 20rpx;
+}
+
+.inputerea {
+  width: 404rpx;
+  height: 64rpx;
+  line-height: 64rpx;
+  font-size: 26rpx;
+  color: #333;
+  margin-left: 26rpx;
+}
+
+.example-text-erea {
+  height: 74rpx;
+  line-height: 74rpx;
+  font-size: 24rpx;
+  color: #b2b2b2;
+  padding: 0 25rpx;
+}
+
+.Mengcen_cancel {
+  width: 206rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  color: #fff;
+  font-size: 30rpx;
+  background-color: #999;
+  border-radius: 50rpx;
+  text-align: center;
+}
+
+.cancel_confirm {
+  padding: 0 41rpx;
+  margin-top: 67rpx;
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: space-between;
+}
+
+.Mengcen_submit {
+  width: 206rpx;
+  height: 72rpx;
+  line-height: 72rpx;
+  font-size: 30rpx;
+  background-color: #fff04a;
+  border-radius: 50rpx;
+  color: #333;
+  text-align: center;
+}
+
+.disabled {
+  background: #cecece;
+  color: #fff;
+}
+
+button::after {
+  border: 0;
+}
+
+.uploadText {
+  margin-top: 68rpx;
+  font-family: PingFangSC-Regular;
+  font-size: 32rpx;
+  color: #666;
+  letter-spacing: 0;
+  text-align: center;
+}
+
+.progress {
+  width: 540rpx;
+  margin: 0 auto;
+  margin-top: 20rpx;
+  margin-bottom: 84rpx;
+}
+
+/*点击加号弹出模态框*/
+
+.pvModel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 9999;
+}
+
+.pvModel-box {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  animation: bgColor 0.5s ease;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.pvModel-main {
+  width: 750rpx;
+  background: #efeff5;
+  animation: pvBottom 0.3s ease;
+  position: relative;
+}
+
+.mainItem {
+  width: 100%;
+  height: 80rpx;
+  border-bottom: 1rpx solid #efeff5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+}
+
+.mainItem text {
+  color: #333;
+  font-size: 30rpx;
+}
+
+.mainItem image {
+  width: 30rpx;
+  height: 30rpx;
+}
+
+/* .pvModel-pic {
+  width: 68rpx;
+  height: 98rpx;
+  animation: pvTop 0.3s ease 0.3s;
+  margin-top: 114rpx;
+  margin-right: 138rpx;
+}
+
+.pvModel-line {
+  width: 3rpx;
+  height: 135rpx;
+  position: absolute;
+  left: 352rpx;
+  top: 85rpx;
+}
+
+.pvModel-vid {
+  width: 82rpx;
+  height: 99rpx;
+  animation: pvTop 0.3s ease 0.3s;
+  margin-top: 112rpx;
+  margin-left: 138rpx;
+}
+
+.pvModel-close {
+  width: 77rpx;
+  height: 77rpx;
+  position: absolute;
+  bottom: -18rpx;
+  left: 352rpx;
+  transform: translateX(-50%);
+  vertical-align: bottom;
+  opacity: 1;
+  animation: pvOpacity 0.7s ease;
+} */
+
+@keyframes bgColor {
+  0% {
+    background: rgba(0, 0, 0, 0);
+  }
+
+  100% {
+    background: rgba(0, 0, 0, 0.5);
+  }
+}
+
+@keyframes pvBottom {
+  0% {
+    bottom: -310rpx;
+  }
+
+  100% {
+    bottom: 0rpx;
+  }
+}
+
+@keyframes pvTop {
+  0% {
+    margin-top: 90rpx;
+  }
+
+  50% {
+    margin-top: 135rpx;
+  }
+
+  100% {
+    margin-top: 112rpx;
+  }
+}
+
+@keyframes pvOpacity {
+  0% {
+    opacity: 0;
+  }
+
+  70% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+/* 查看视屏 */
+
+.seeVideo {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow: hidden;
+  z-index: 2000;
+}
+
+.videobox {
+  text-align: center;
+  width: 100%;
+  height: 562rpx;
+  position: fixed;
+  top: 48%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+video {
+  width: 100%;
+  height: 562rpx;
+}
+
+.closeSeeVideo {
+  width: 41rpx;
+  height: 41rpx;
+  margin-top: 50rpx;
+}
+
+/* 时间查询蒙层 */
+
+.checkFeatures {
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  position: fixed;
+  top: 0;
+  z-index: 10;
+}
+
+.allpicimg {
+  width: 642rpx;
+  height: 80rpx;
+  /* border-bottom: 1px solid #efeff5 ; */
+  background-color: white;
+  vertical-align: middle;
+}
+
+.checkimg {
+  width: 642rpx;
+  height: 80rpx;
+  vertical-align: middle;
+}
+
+.checkcancelimg {
+  width: 642rpx;
+  height: 80rpx;
+  vertical-align: middle;
+}
+
+.checkBox {
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+  background-color: #efeff5;
+  text-align: center;
+  animation: newshareupstyle 0.5s ease;
+  /* padding: 20rpx 0; */
+}
+
+.allpictext {
+  width: 100%;
+  /* color:#333;
+  font-size:30rpx;
+  height:80rpx; */
+  border-bottom: 1rpx solid #efeff5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+}
+
+picker {
+  width: 750rpx;
+  /* color:#333;
+  font-size:30rpx; */
+  height: 80rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+  margin-bottom: 8px;
+}
+
+.checkCancel {
+  width: 100%;
+  /* color:#333;
+  font-size:30rpx; */
+  height: 80rpx;
+  border-bottom: 1rpx solid #efeff5;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+}
+
+.checkWidth {
+  width: 100%;
+}
+
+@keyframes newshareupstyle {
+  0% {
+    bottom: -520rpx;
+  }
+
+  100% {
+    bottom: 0rpx;
+  }
+}
+
+.navfixed {
+  /* background-color: pink; */
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 1000;
+  background-color: white;
+  padding: 20rpx 0;
+}
+
+.navfixed .contentInfo {
+  margin-top: 0;
+}
+
+.noscroll {
+  height: 100%;
+  overflow: hidden;
+}
+
+page {
+  height: 100%;
+}
+.mengcen{
+  width:242rpx;
+  height:242rpx;
+  position:absolute;
+  top:0;
+  left:0;
+  background: rgba(0,0,0,0.5);
+  z-index:9;
+  color: #fff;
+  font-size: 30rpx;
+  text-align: center;
+  line-height:242rpx;
+}

@@ -1,0 +1,214 @@
+/* pages/others/userphoto/userphoto.wxss */
+
+.userInfo {
+  width: 750rpx;
+  height: 380rpx;
+  /* background: url('http://oibl5dyji.bkt.clouddn.com/20170922092521.png') no-repeat; */
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40rpx;
+}
+
+.userPic {
+  width: 180rpx;
+  height: 180rpx;
+  border: 4rpx solid #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 50%;
+  margin-top: 26rpx;
+}
+
+.userPic image {
+  width: 174rpx;
+  height: 174rpx;
+  border-radius: 50%;
+}
+
+.userName {
+  font-size: 32rpx;
+  color: #333333;
+  display: block;
+  width: 190rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* border-bottom: 1rpx solid #cecece; */
+  text-align: center;
+  margin-top: 28rpx;
+}
+
+.photoInfo {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+ margin-top: 50rpx;
+}
+
+.photoNum {
+  color: #333;
+  font-size: 38rpx;
+  line-height: 50rpx;
+
+}
+
+.photoUserName {
+  color: #999;
+  font-size: 22rpx;
+  line-height: 32rpx;
+  margin-top: 12rpx;
+}
+
+.allbox {
+  border-top: 1rpx solid #cecece;
+  position: relative;
+  width: 698rpx;
+  height: 73rpx;
+  margin-left: 26rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.allvideo {
+  width: 41rpx;
+  height: 30rpx;
+}
+
+.videotext {
+  font-size: 30rpx;
+  color: #666;
+  margin-left: 17rpx;
+}
+
+.videod {
+  width: 17rpx;
+  height: 29rpx;
+  position: absolute;
+  right: 0;
+  top: 22rpx;
+}
+
+/* .photopageimgbox {
+  display: inline-block;
+  position: relative;
+} */
+
+.photoageitem {
+  box-sizing: border-box;
+  /* padding: 0 10rpx 0 20rpx; */
+  font-size: 0;
+  /* margin-top: 40rpx; */
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between
+}
+
+.timetitle {
+  width: 100%;
+  height: 48rpx;
+  display: flex;
+  align-items: center;
+  margin-bottom: 12rpx;
+  padding-left: 20rpx;
+}
+
+.timetitle image.timeImg {
+  width: 30rpx;
+  height: 30rpx;
+  margin: 0;
+  margin-right: 14rpx;
+}
+
+.timetitle text {
+  font-size: 26rpx;
+  color: #666;
+}
+
+.photoageitem .photopageimgbox {
+  width: 242rpx;
+  height: 242rpx;
+  /* margin: 0 8rpx 8rpx 0; */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position:relative;
+  margin-bottom: 20rpx;
+}
+
+.photopageimgbox image {
+  width: 242rpx;
+  height: 242rpx;
+  vertical-align: bottom;
+}
+
+.photopageimgbox .videoLogo {
+  width: 94rpx;
+  height: 60rpx;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index:100;
+}
+
+.noitempage {
+  position: relative;
+}
+
+.hidupload {
+   width: 220rpx;
+  height: 254rpx;
+ 
+  position: absolute;
+  top: 160rpx;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.hidshare {
+  width: 117rpx;
+  height: 73rpx;
+  position: absolute;
+  top: 24rpx;
+  left: 44rpx;
+}
+
+/* 查看视屏 */
+.seeVideo{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top:0;
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow: hidden;
+  z-index: 1000;
+}
+.videobox{
+  text-align: center;
+  background-color: red;
+  width: 100%;
+  height: 562rpx;
+  position: fixed;
+  top:48%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+
+}
+video{
+  width: 100%;
+  height: 562rpx;
+
+}
+.closeSeeVideo{
+  width: 41rpx;
+  height: 41rpx;
+  margin-top: 50rpx;
+}

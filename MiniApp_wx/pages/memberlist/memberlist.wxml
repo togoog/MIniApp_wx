@@ -1,0 +1,44 @@
+<!--pages/others/memberlist/memberlist.wxml-->
+
+<view class="mem-container">
+  <view class="topFixed">
+    <view class="mem-search">
+      <image class="searchImg" src="http://oibl5dyji.bkt.clouddn.com/20171015101622.png"></image>
+      <input value="{{value}}" bindconfirm="searchList" confirm-type="search" disabled="{{state}}" class="searchMebBtn" placeholder="输入成员名字" placeholder-style="color: #999" />
+      <image wx:if="{{closeState && closeShow}}" catchtap="closeList" class="closeImg" src="http://oibl5dyji.bkt.clouddn.com/20171015111615.png"></image>
+    </view>
+    <view class="addmember">
+      <button open-type="share"></button>
+    </view>
+  </view>
+
+  <scroll-view scroll-y="true" bindscrolltolower="loading" style="height:{{height}}px;background:#fff;">
+    <view class="memberList">
+      <view class="listItem" wx:for="{{memList}}" wx:key="{{index}}" catchtap="{{state ? 'changeSel':'toLookPhoto'}}" data-sel="{{index}}">
+        <view class="itemImg">
+          <image src="{{item.user.upic}}"></image>
+          <!-- <image class="posImg" src="http://oibl5dyji.bkt.clouddn.com/20171015101621.png"></image> -->
+        </view>
+        <text class="itemName">{{item.user.unickname}}</text>
+        <block wx:if="{{state}}">
+          <image wx:if="{{item.selected}}" class="dirImg" src="http://oibl5dyji.bkt.clouddn.com/20171015101626.png"></image>
+          <image wx:else class="dirImg" src="http://oibl5dyji.bkt.clouddn.com/20171015101624.png"></image>
+        </block>
+      </view>
+    </view>
+    <view class="kongList" wx:if="{{memList.length == 0 && !state}}">
+      <image src="http://oibl5dyji.bkt.clouddn.com/20171016132121.png"></image>
+      <text>真抱歉</text>
+      <text>没有搜索到相关内容</text>
+    </view>
+  </scroll-view>
+  <view class="bottomDelete" wx:if="{{createrid == userid}}">
+    <view class="selectImgBox">
+      <text wx:if="{{!state}}" catchtap="compiled" class="text1">编辑</text>
+      <block wx:else>
+        <text catchtap="delMember" class="text2">删除</text>
+        <text catchtap="toBack" class="text3">取消</text>
+      </block>
+    </view>
+  </view>
+</view>

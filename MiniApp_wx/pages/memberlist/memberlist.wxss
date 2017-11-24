@@ -1,0 +1,191 @@
+/* pages/others/memberlist/memberlist.wxss */
+
+.mem-container {
+  padding-top: 20rpx;
+  background: #f8f8f8;
+}
+
+.topFixed {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  background: #f8f8f8;
+  padding-top:20rpx;
+
+}
+
+.mem-search {
+  width: 710rpx;
+  height: 80rpx;
+  display: flex;
+  align-items: center;
+  border-radius: 40rpx;
+  background: #fff;
+  margin: 0 auto 20rpx;
+}
+
+.searchImg {
+  width: 34rpx;
+  height: 34rpx;
+  margin-left: 34rpx;
+}
+
+.closeImg {
+  width: 30rpx;
+  height: 30rpx;
+  border-radius: 50%;
+  margin-left: 20rpx;
+}
+
+.searchMebBtn {
+  width: 560rpx;
+  height: 70rpx;
+  line-height: 70rpx;
+  margin-left: 8rpx;
+  color: #333;
+  font-size: 28rpx;
+}
+
+.memberList {
+  width: 100%;
+  background: #fff;
+  box-sizing: border-box;
+  padding-left: 54rpx;
+  padding-top: 220rpx;
+  padding-bottom: 140rpx;
+}
+
+.addmember {
+  width: 750rpx;
+  height: 120rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #fff;
+}
+
+.addmember button {
+  width: 682rpx;
+  height: 98rpx;
+  background: url(http://oibl5dyji.bkt.clouddn.com/20171015104803.png);
+  background-size: 682rpx 98rpx;
+}
+
+.listItem {
+  width: 100%;
+  height: 88rpx;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-bottom: 1rpx solid #d8d8d8;
+}
+
+.itemImg {
+  width: 76rpx;
+  height: 76rpx;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.itemImg image {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+}
+
+.itemImg .posImg {
+  width: 32rpx;
+  height: 32rpx;
+  position: absolute;
+  right: 0;
+  bottom: -10rpx;
+}
+
+.dirImg {
+  width: 36rpx;
+  height: 36rpx;
+  margin-left: 180rpx;
+}
+
+.itemName {
+  width: 360rpx;
+  height: 88rpx;
+  display: block;
+  line-height: 88rpx;
+  color: #333;
+  font-size: 30rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  word-break: break-all;
+  margin-left: 20rpx;
+}
+/* 搜索的内容为空 */
+.kongList{
+  width: 750rpx;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.kongList image{
+  width:348rpx;
+  height:214rpx;
+}
+.kongList text{
+  font-size: 30rpx;
+  color: #cecece;
+  line-height: 42rpx;
+}
+
+/* 底部的编辑部分 */
+
+.bottomDelete {
+  width: 750rpx;
+  height: 140rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  background: #fff;
+}
+
+.selectImgBox {
+  width: 700rpx;
+  height: 100rpx;
+  display: flex;
+}
+
+.selectImgBox text {
+  display: block;
+  text-align: center;
+  height: 100rpx;
+  line-height: 100rpx;
+  border-radius: 4rpx;
+  font-size: 36rpx;
+  font-weight: 500;
+}
+
+.text1 {
+  width: 700rpx;
+  background: #ffee53;
+  color: #000;
+}
+
+.text2 {
+  width: 330rpx;
+  background: #ffee53;
+  color: #333;
+}
+
+.text3 {
+  width: 330rpx;
+  background: #cecece;
+  color: #fff;
+  margin-left: 40rpx;
+}

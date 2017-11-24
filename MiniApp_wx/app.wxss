@@ -1,0 +1,25 @@
+/**app.wxss**/
+/* 反回首页的按钮 */
+
+.toGoHome {
+  width: 206rpx;
+  height: 68rpx;
+  border-bottom-right-radius: 68rpx;
+  border-top-right-radius: 68rpx;
+  position: fixed;
+  left: 0;
+  top: 22rpx;
+  background: #fff;
+  transition: all 0.3s ease-out;
+}
+
+.home1 {
+  top: 118rpx;
+  background: #ffeb36;
+}
+
+.toGoHome image {
+  width: 100%;
+  height: 100%;
+  vertical-align: center;
+}

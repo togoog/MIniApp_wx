@@ -1,0 +1,232 @@
+/* pages/index/welfare/welfare.wxss */
+page{
+  width:100%;
+  height:100%;
+}
+.fare-container{
+  width:100%;
+  height:100%;
+  background:#efeff5;
+  box-sizing: border-box;
+  overflow: hidden;
+}
+.space{
+  width:750rpx;
+  height:316rpx;
+  background:#fff;
+  display: flex;
+  flex-direction:row;
+  border-bottom:1rpx solid #cecece;
+}
+.capacity{
+  width:150rpx;
+  height:316rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:flex-end;
+  font-weight:500;
+  color:#333;
+  
+}
+.capacity-total{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items:center;
+  margin-top:18rpx;
+  margin-right:20rpx;
+}
+.capacityNum{
+  font-size:30rpx;
+  line-height:30rpx;
+  text-align:center;
+}
+.capacityText{
+  font-size:20rpx;
+  line-height:20rpx;
+  text-align:center;
+  /*margin-top:7rpx;*/
+}
+.capacity-content{
+  width:600rpx;
+  height:316rpx;
+  display:flex;
+  flex-direction: column;
+  justify-content: center;
+  /*overflow:hidden;*/
+}
+.residualCapacity{
+  transform:translateX(-50%);
+  width:116rpx;
+  height:133rpx;
+  background:url('http://oibl5dyji.bkt.clouddn.com/20170611105829.png') no-repeat;
+  background-size:116rpx 133rpx;
+  display:flex;
+  flex-direction: column;
+  justify-content:space-between;
+  align-items: center;
+  font-weight:500;
+  color:#333;
+  margin-bottom:9rpx;
+  /* transition:margin-left 0.5s ease; */
+}
+.residual1{
+  font-size:29rpx;
+  line-height:29rpx;
+  text-align:center;
+  margin-top:35rpx;
+}
+.residual2{
+  line-height: 20rpx;
+  font-size:20rpx;
+  text-align:center;
+  margin-bottom:43rpx;
+}
+.capacityProgress{
+  width:520rpx;
+  height:10rpx;
+  border-radius:5rpx;
+  background:#c2c2c2;
+  overflow: hidden;
+}
+.usedProgress{
+  height:10rpx;
+  border-top-left-radius:5rpx;
+  border-bottom-left-radius:5rpx;
+  background:#333;
+  
+}
+.usedCapacity{
+  transform:translateX(-50%);
+  width:95rpx;
+  height:109rpx;
+  background:url('http://oibl5dyji.bkt.clouddn.com/20170611105828.png') no-repeat;
+  background-size:95rpx 109rpx;
+  display:flex;
+  flex-direction: column;
+  justify-content:space-between;
+  align-items:center;
+  font-weight:500;
+  color:#333;
+  margin-top:7rpx;
+  /* transition:margin-left 1s ease; */
+}
+.used1{
+  font-size:24rpx;
+  line-height:24rpx;
+  text-align:center;
+  margin-top:39rpx;
+}
+.used2{
+  font-size:17rpx;
+  line-height:17rpx;
+  text-align:center;
+  margin-bottom:22rpx;
+}
+
+/*功能区域*/
+.func-detail{
+  width:706rpx;
+  padding:74rpx 0 41rpx 0;
+  margin:0 22rpx;
+  /* border-bottom:1rpx solid #cecece; */
+  display: flex;
+  flex-direction:row;
+  /* margin-top: 200rpx; */
+}
+.sign,.invitation,.uppic,.shared{
+  width:235rpx;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.func-pic,.share-pic{
+  width:119rpx;
+  height:119rpx;
+  border-radius:50%;
+}
+.func-text{
+  margin-top:41rpx;
+  color:#333;
+  font-size:30rpx;
+  text-align:center;
+  position:relative;
+}
+.func-num,.func-kongjian,.func-price{
+  color:#999;
+  font-size:25rpx;
+  line-height:24rpx;
+}
+.func-num{
+  margin-top:17rpx;
+}
+.func-kongjian{
+  margin-top:4rpx;
+  margin-bottom:36rpx;
+}
+.func-detail navigator{
+  line-height:37rpx;
+}
+.func-lookdetail{
+  /*margin-top:36rpx;*/
+  width:143rpx;
+  height:37rpx;
+  vertical-align:bottom;
+}
+.func-price{
+  margin-top:22rpx;
+}
+
+/*分享区域*/
+.share-detail{
+  width:706rpx;
+  padding:42rpx 0 41rpx 0;
+  margin:0 22rpx;
+  display: flex;
+  flex-direction:row;
+}
+.share-text{
+  margin-top:41rpx;
+  font-size:30rpx;
+  line-height:30rpx;
+  color:#333;
+  text-align:center;
+  position:relative;
+}
+.share-price{
+  font-size:25rpx;
+  line-height:25rpx;
+  color:#999;
+  margin-top:16rpx;
+}
+.xianshi{
+  width:15rpx;
+  height:15rpx;
+  border-radius:50%;
+  position:absolute;
+  top:-5rpx;
+  right:-20rpx;
+}
+
+/*签到弹框提示*/
+.welSignModel{
+  position:fixed;
+  top:0;right:0;bottom:0;left:0;
+  z-index:999;
+  background:rgba(0,0,0,0.5);
+}
+.signModelDialog{
+  width:480rpx;
+  height:276rpx;
+  background:#fff;
+  position:absolute;
+  left:50%;top:50%;
+  transform:translate(-50%,-50%);
+}
+.dialogImg{
+  width:480rpx;
+  height:276rpx;
+  vertical-align: bottom;
+}

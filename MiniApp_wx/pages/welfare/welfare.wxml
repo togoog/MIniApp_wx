@@ -1,0 +1,105 @@
+<!--pages/index/welfare/welfare.wxml-->
+<view class="fare-container">
+  <!--容量使用情况-->
+  <view class="space">
+    <view class="capacity">
+      <view class="capacity-total">
+        <text class="capacityNum">{{userinfoDetail.totalStorage}}G</text>
+        <text class="capacityText">总容量</text>
+      </view>
+    </view>
+    <view class="capacity-content">
+      <view class="residualCapacity" style="margin-left:{{520-userinfoDetail.remainStorage/userinfoDetail.totalStorage*520/2}}rpx">
+        <text class="residual1">{{userinfoDetail.remainStorage}}G</text>
+        <text class="residual2">剩余容量</text>
+      </view>
+      <view class="capacityProgress">
+        <view class="usedProgress" style="width:{{userinfoDetail.useStorage/userinfoDetail.totalStorage*520}}rpx;"></view>
+      </view>
+      <view class="usedCapacity" style="margin-left:{{userinfoDetail.useStorage/userinfoDetail.totalStorage*520/2}}rpx;">
+        <text class="used1">{{userinfoDetail.useStorage}}G</text>
+        <text class="used2">已使用</text>
+      </view>
+    </view>
+  </view>
+
+  <!--功能区域-->
+  <view class="func-detail">
+    <view class="sign">
+    <image wx:if="{{userinfoDetail.isTodaySign}}" class="func-pic" src="http://oibl5dyji.bkt.clouddn.com/20170611105825ed.png"></image>
+      <image wx:else catchtap="signBtn" class="func-pic" src="http://oibl5dyji.bkt.clouddn.com/20170611105825.png"></image>
+      <view class="func-text">
+        <text>{{userinfoDetail.isTodaySign?'已签到':'签到'}}</text>
+        <image hidden="{{userinfoDetail.isTodaySign}}" class="xianshi" src="http://oibl5dyji.bkt.clouddn.com/hongdian.png"></image>
+      </view>
+      <text class="func-num">获得100M</text>
+      <text class="func-kongjian">空间奖励</text>
+      <navigator url="/pages/detail/sign/sign?days={{userinfoDetail.signDay}}&total={{userinfoDetail.totalStorage}}">
+        <image class="func-lookdetail" src="http://oibl5dyji.bkt.clouddn.com/20170611105822detail.png"></image>
+      </navigator>
+      <text class="func-price">连续签到送iPhone7</text>
+    </view>
+
+    <view class="invitation">
+      <image class="func-pic" catchtap="invitFriend" src="http://oibl5dyji.bkt.clouddn.com/20170611105827.png"></image>
+      <view class="func-text">
+        <text>邀请好友</text>
+        <image wx:if="{{userinfoDetail.inviteNum==0}}" class="xianshi" src="http://oibl5dyji.bkt.clouddn.com/hongdian.png"></image>
+      </view>
+      <text class="func-num">成功邀请后获得</text>
+      <text class="func-kongjian">0.5G空间奖励</text>
+      <navigator url="/pages/detail/invited/invited?inviteNum={{userinfoDetail.inviteNum}}">
+        <image class="func-lookdetail" src="http://oibl5dyji.bkt.clouddn.com/20170611105822detail.png"></image>
+      </navigator>
+      <text class="func-price">邀请好友送礼品</text>
+    </view>
+
+    <view class="uppic">
+      <image class="func-pic" src="http://oibl5dyji.bkt.clouddn.com/20170611105826.png"></image>
+      <view class="func-text">
+        <text>上传照片</text>
+      </view>
+      <text class="func-num">已累计上传</text>
+      <text class="func-kongjian">{{userinfoDetail.picNum}}张照片</text>
+      <navigator url="/pages/detail/photodetail/photodetail?picNum={{userinfoDetail.picNum}}">
+        <image class="func-lookdetail" src="http://oibl5dyji.bkt.clouddn.com/20170611105822detail.png"></image>
+      </navigator>
+      <text class="func-price">累计传图送好礼</text>
+    </view>
+  </view>
+
+  <!--分享区域-->
+  <!-- <view class="share-detail">
+    <view class="shared">
+      <image class="share-pic" catchtap="sharewx" src="http://oibl5dyji.bkt.clouddn.com/20170611105824.png"></image>
+      <view class="share-text">
+        <text>分享到微信群</text>
+        <image wx:if="{{userinfoDetail.isShareWechatGroup==0}}" class="xianshi" src="http://oibl5dyji.bkt.clouddn.com/hongdian.png"></image>
+      </view>
+      <text class="share-price">得0.5G空间奖励</text>
+    </view>
+    <view class="shared">
+      <image class="share-pic" catchtap="shareFrd" src="http://oibl5dyji.bkt.clouddn.com/20170611105823.png"></image>
+      <view class="share-text">
+        <text>分享到朋友圈</text>
+        <image wx:if="{{userinfoDetail.isShareMoments==0}}" class="xianshi" src="http://oibl5dyji.bkt.clouddn.com/hongdian.png"></image>
+      </view>
+      <text class="share-price">得0.5G空间奖励</text>
+    </view>
+    <view class="shared">
+      <image class="share-pic" catchtap="appLogin" src="http://oibl5dyji.bkt.clouddn.com/20170611105822.png"></image>
+      <view class="share-text">
+        <text>App登录</text>
+        <!--<image class="xianshi" src="http://oibl5dyji.bkt.clouddn.com/hongdian.png"></image>-->
+      <!-- </view>
+      <text class="share-price">签到累加</text>
+    </view>
+  </view>  -->
+</view>
+
+<!--签到弹框提示-->
+<view class="welSignModel" hidden="{{showWelSignModel}}">
+  <view class="signModelDialog">
+    <image catchtap="dialogImg" class="dialogImg" src="http://oibl5dyji.bkt.clouddn.com/20170623153030.png"></image>
+  </view>
+</view>

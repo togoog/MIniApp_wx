@@ -1,0 +1,40 @@
+<!--pages/others/userphoto/userphoto.wxml-->
+<scroll-view scroll-y bindscrolltolower="{{(from == 'personal') ? 'loading' : 'loadingOther'}}" style="height:{{winheight}}px;">
+  <view class="userInfo">
+    <view class="userPic">
+      <image src="{{avatarData.upic}}"></image>
+    </view>
+    <text class="userName">{{avatarData.unickname}}</text>
+    <view class="photoInfo">
+      <text class="photoNum">{{(from == 'personal') ? avatarData.photo : Pnum}}</text>
+      <text class="photoUserName">{{(from == 'personal') ? '我的照片' : 'TA的照片'}}</text>
+    </view>
+  </view>
+
+  <!--点击查看视频  -->
+<block wx:if="{{toseeVideo}}">
+  <view class='seeVideo'>
+    <view class='videobox'>
+      <video fixed="true" src="{{videoUrl}}"></video>
+      <image catchtap='closeSeeVideo' class='closeSeeVideo' src='http://oibl5dyji.bkt.clouddn.com/20171027110629.png'></image>
+    </view>
+  </view>
+</block>
+
+
+  <block wx:if="{{photopagedata_day.length>0}}">
+    <view wx:for="{{photopagedata_day}}" wx:key="{{item.euploadtime}}" wx:for-index="picitemindex" class="photoageitem">
+      <view class="timetitle">
+        <image class="timeImg" src="http://oibl5dyji.bkt.clouddn.com/20170922150531.png"></image>
+        <text>{{item.showTime}}</text>
+      </view>
+      <view class="photopageimgbox" wx:for="{{item.picList}}" wx:for-item="pic" wx:key="{{item.pid}}" wx:for-index="picindex" catchtap="{{item.eMain==4?'seeBigVideo':''}}" data-url="{{pic.poriginal}}">
+          <image  mode="aspectFill" src="{{pic.thumbnail}}" data-picitemindex="{{picitemindex}}" data-picindex="{{picindex}}" catchtap="{{item.eMain==4?'':'lookbigpic'}}"></image>
+          <image wx:if="{{item.eMain == 4}}" class="videoLogo" src="http://oibl5dyji.bkt.clouddn.com/20170918140623.png"></image>
+      </view>
+    </view>
+  </block>
+  <view wx:else class="noitempage">
+    <image class="hidupload" src="http://oibl5dyji.bkt.clouddn.com/20171026175908.png"></image>
+  </view>
+</scroll-view>

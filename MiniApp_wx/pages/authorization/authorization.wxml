@@ -1,0 +1,7 @@
+<!--pages/authorization/authorization.wxml-->
+<view class="au-container">
+  <view class="section">
+    <image class="iconPic" src="http://oibl5dyji.bkt.clouddn.com/20170724095622.png"></image>
+    <image catchtap="resetAu" class="resetBtn" src="http://oibl5dyji.bkt.clouddn.com/20170724095621.png"></image>
+  </view>
+</view>

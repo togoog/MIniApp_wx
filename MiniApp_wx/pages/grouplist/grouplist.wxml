@@ -1,0 +1,52 @@
+<!--pages/others/grouplist/grouplist.wxml-->
+<view class="list-container">
+  <!-- 我创建的 -->
+  <view class="userCreate" wx:if="{{uCreateList.length>0}}">
+    <view class="listTitle">
+    <text class='titleone'>我创建的</text>
+      <!-- <image src="http://oibl5dyji.bkt.clouddn.com/20170724134132.png"></image> -->
+    </view>
+    <navigator wx:for="{{uCreateList}}" wx:key="{{index}}" url="/pages/details/details?groupid={{item.groupid}}&from=grouplist">
+      <view class="listDetail">
+        <view class="liseInfo">
+          <view class="liseName">
+            <text>{{item.gname}}</text>
+          </view>
+        </view>
+        <image class="personPic" mode='aspectFill' src="http://oibl5dyji.bkt.clouddn.com/20171117160700.png"></image>
+        <text class="listNum">{{item.gnum}}</text>
+        <image class="more" src="http://oibl5dyji.bkt.clouddn.com/20171117160600.png"></image>
+      </view>
+    </navigator>
+  </view>
+
+  <!-- 我加入的 -->
+  <view class="userAdd" wx:if="{{uAddList.length>0}}">
+    <view class="listTitle">
+      <text class='titleone'>我加入的</text>
+    </view>
+    <!-- <navigator wx:for="{{uAddList}}" wx:key="{{index}}" url="/pages/details/details">
+      <view class="listDetail">
+        <view class="liseInfo">
+          <view class="liseName">
+            <text>{{item.gname}}</text>
+          </view>
+          <text class="listNum">{{item.gnum}}</text>
+        </view>
+        <image class="personPic" src="http://oibl5dyji.bkt.clouddn.com/20170724134131.png"></image>
+      </view>
+    </navigator> -->
+    
+      <view wx:for="{{uAddList}}" wx:key="{{index}}" data-groupid='{{item.groupid}}' catchtap='gotodetails' class="listDetail">
+        <view class="liseInfo" >
+          <view class="liseName">
+            <text>{{item.gname}}</text>
+          </view>
+        </view>
+         <image class="personPic" mode='aspectFill' src="http://oibl5dyji.bkt.clouddn.com/20171117160700.png"></image>
+          <text class="listNum">{{item.gnum}}</text>
+         <image class="more"  src="http://oibl5dyji.bkt.clouddn.com/20171117160600.png"></image>
+      </view>
+    
+  </view>
+</view>

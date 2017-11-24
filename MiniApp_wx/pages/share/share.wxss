@@ -1,0 +1,152 @@
+/* pages/share/share.wxss */
+.sharepic{
+  width: 100%;
+  height: 562rpx;
+}
+.footMenu{
+  display: flex;
+  width: 100%;
+  padding: 40rpx 0;
+   background-color: #FFEB36;
+   position: fixed;
+   bottom:0;
+}
+.footMenu view:nth-child(1){
+  font-size: 30rpx;
+  position: absolute;
+   left: 50%;
+   top:50%;
+  transform: translate(-50%,-50%); 
+  line-height: 42rpx;
+  box-sizing: border-box;
+}
+.footMenu view:nth-child(2){
+  font-size: 30rpx;
+  width: 50%;
+  text-align: center;
+  line-height: 42rpx;
+  background-color: #FFEB36;
+}
+.downloadicon{
+  width: 29rpx;
+  height: 29rpx;
+  vertical-align: middle;
+  margin-top: -6rpx;
+}
+.line{
+  width: 2rpx;
+  height: 42rpx;
+}
+.shareRadio{
+  font-size: 30rpx;
+}
+.sharetoU{
+  width: 29rpx;
+  height: 29rpx;
+  vertical-align: middle;
+  margin-top: -6rpx;
+}
+button{
+  margin: 0;
+  padding: 0;
+  background-color: #FFEB36;
+  border: none;
+  line-height: normal;
+}
+button::after{
+  border: none;
+}
+video{
+  width: 100%;
+}
+scroll-view{
+  padding-bottom: 80rpx;
+}
+.template{
+  position: relative;
+}
+icon{
+  width:94rpx;
+  height:60rpx;
+  background: url('http://oibl5dyji.bkt.clouddn.com/20170918140623.png') no-repeat;
+  background-size: 100%; 
+  position:absolute;
+  top:50%;
+  left:50%;
+  transform: translate(-50%,-50%); 
+}    
+/* 查看视屏 */
+.seeVideo{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top:0;
+  background-color: rgba(0, 0, 0, 0.9);
+  overflow: hidden;
+  z-index: 10000;
+}
+.videobox{
+  text-align: center;
+  width: 100%;
+  height: 562rpx;
+  position: fixed;
+  top:48%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: 10000;
+
+}
+video{
+  width: 100%;
+  height: 562rpx;
+
+}
+.closeSeeVideo{
+  width: 41rpx;
+  height: 41rpx;
+  margin-top: 50rpx;
+}
+
+.outfootMenu{
+  display: flex;
+  width: 100%;
+  padding: 23rpx 0;
+   background-color: #FFEB36;
+   position: fixed;
+   bottom:0;
+}
+.outfootMenu view:nth-child(1){
+  font-size: 30rpx;
+   width: 50%;
+  text-align: center;
+  line-height: 42rpx;
+  border-right: 1px solid #000;
+  box-sizing: border-box;
+}
+.outfootMenu view:nth-child(2){
+  font-size: 30rpx;
+  width: 50%;
+  text-align: center;
+  line-height: 42rpx;
+  background-color: #FFEB36;
+ 
+}
+.outseedetail{
+  width: 38rpx;
+  height: 26rpx;
+  vertical-align: middle;
+  margin-top: -6rpx;
+}
+.line{
+  width: 2rpx;
+  height: 42rpx;
+}
+.outshareRadio{
+  font-size: 30rpx;
+}
+.outsharetoU{
+  width: 29rpx;
+  height: 29rpx;
+  vertical-align: middle;
+  margin-top: -6rpx;
+}

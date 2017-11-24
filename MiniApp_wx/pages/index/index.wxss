@@ -1,0 +1,683 @@
+/**index.wxss**/
+page{
+  width: 100%;
+    height: 100%;  
+    box-sizing: border-box;
+}
+.loading{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  top:0;
+}
+.loading image{
+  width: 298rpx;
+  height: 334rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-60%)
+}
+.idx-container{
+   width: 100%;
+   height: 100%; 
+   padding-top: 50rpx;
+   box-sizing: border-box;
+}
+.v-container{
+  width: 100%;
+   height: 100%; 
+   /* padding-top: 50rpx;  */
+  box-sizing: border-box;
+}
+.textInfo{
+ margin: 52rpx 0 57rpx 74rpx;
+}
+.photoName{
+  font-size: 38rpx;
+  font-weight: 600;
+  color: #333;
+}
+.title{
+   margin-bottom: 34rpx;
+   position: relative;
+}
+.memberPic{
+  width: 23rpx;
+  height: 24rpx;
+}
+.photoPic{
+  width: 23rpx;
+  height: 23rpx;
+  margin-left:102rpx;
+}
+.reset{
+  width: 33rpx;
+  height: 33rpx;
+  position: absolute; 
+  top:8rpx;
+  right: 80rpx;
+}
+.photoNum,.memberNum{
+  font-size: 26rpx;
+  color:#333;
+  margin-left: 26rpx;
+}
+swiper{
+  height:100%;
+}
+.slide-image{
+  height: 736rpx;
+  width: 100%;
+}
+
+.menu{
+  width: 100%;
+  position: fixed;
+  bottom:0rpx;
+  height: 115rpx;
+  z-index: 10;
+  background-color: white;
+   padding: 20rpx 0; 
+}
+.menu view:nth-child(1){
+  width: 114rpx;
+  /* height: 90rpx; */
+  height: 100%;
+   position: absolute; 
+  left: 65rpx; 
+   top: 0rpx; 
+} 
+.menu view:nth-child(2){
+  width: 115rpx;
+  height: 115rpx;
+   position: absolute; 
+   left: 50%;
+  transform: translateX(-50%) 
+} 
+.menu view:nth-child(3){
+  width: 114rpx;
+  height: 100%;
+  position: absolute; 
+  right:65rpx; 
+  top: 0rpx; 
+} 
+
+ .myInfo{
+  width: 56rpx;
+  height: 56rpx;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%)
+
+}
+.uploadpic{
+  width: 115rpx;
+  height: 115rpx;
+  
+}
+.switch{
+  width: 56rpx;
+  height: 56rpx;
+ position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%,-50%)
+} 
+.imgInfo{
+  position: relative;
+}
+#Carousel-like{
+  width: 76rpx;
+  height: 76rpx;
+  position: absolute;
+  bottom:16rpx;
+  right: 22rpx;
+}
+
+/* 瀑布流模式 */
+.waterfall-box{
+display: flex;
+flex-flow: row wrap;
+padding: 50rpx 66rpx 200rpx 66rpx;
+justify-content: space-between;  
+}
+.waterfall-template{
+   border-radius: 20rpx;
+  width: 287rpx;
+  height: 405rpx;
+  margin-bottom: 40rpx;
+  box-shadow: 0px 5px 13px 0px rgba(76,76,76,0.24);
+  position: relative;
+}
+.waterfall-template .waterfall-cover{
+  width: 287rpx;
+  height: 405rpx;
+  border-radius: 20rpx;
+}
+.waterfall-template .waterfall-like{
+  width: 76rpx;
+  height: 76rpx;
+  position: absolute;
+  top:15rpx;
+  right: 9rpx;
+}
+.waterfall-title{
+  width: 100%;
+  position: absolute;
+  bottom: 18rpx;
+  font-size: 28rpx;
+  height: 60rpx;
+  line-height: 60rpx;
+  padding-left: 18rpx;
+  box-sizing: border-box;
+  color: white;
+  background-color: rgba(0,0,0,0.4);
+  overflow: hidden;
+	text-overflow:ellipsis;
+	white-space: nowrap;
+}
+
+/*点击加号弹出模态框*/
+
+.pvModel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 9999;
+}
+
+.pvModel-box { 
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  animation: bgColor 0.5s ease;
+  background: rgba(0, 0, 0, 0.5);
+}
+
+.pvModel-main {
+  width: 750rpx; 
+  background: #efeff5;
+  animation: pvBottom 0.3s ease;
+  position: relative;
+}
+
+.mainItem{
+  width:100%;
+  height:80rpx;
+  border-bottom:1rpx solid #efeff5;
+  display: flex;
+  justify-content:center;
+  align-items:center;
+  background:#fff;
+}
+.mainItem text{
+  color:#333;
+  font-size:30rpx;
+}
+.mainItem image{
+  width:30rpx;
+  height:30rpx;
+}
+/* .pvModel-pic {
+  width: 68rpx;
+  height: 98rpx;
+  animation: pvTop 0.3s ease 0.3s;
+  margin-top: 114rpx;
+  margin-right: 138rpx;
+}
+
+.pvModel-line {
+  width: 3rpx;
+  height: 135rpx;
+  position: absolute;
+  left: 352rpx;
+  top: 85rpx;
+}
+
+.pvModel-vid {
+  width: 82rpx;
+  height: 99rpx;
+  animation: pvTop 0.3s ease 0.3s;
+  margin-top: 112rpx;
+  margin-left: 138rpx;
+}
+
+.pvModel-close {
+  width: 77rpx;
+  height: 77rpx;
+  position: absolute;
+  bottom: -18rpx;
+  left: 352rpx;
+  transform: translateX(-50%);
+  vertical-align: bottom;
+  opacity: 1;
+  animation: pvOpacity 0.7s ease;
+} */
+@keyframes bgColor {
+  0% {
+    background: rgba(0, 0, 0, 0);
+  }
+
+  100% {
+    background: rgba(0, 0, 0, 0.5);
+  }
+}
+
+@keyframes pvBottom {
+  0% {
+    bottom: -310rpx;
+  }
+
+  100% {
+    bottom: 0rpx;
+  }
+}
+
+@keyframes pvTop {
+  0% {
+    margin-top: 90rpx;
+  }
+
+  50% {
+    margin-top: 135rpx;
+  }
+
+  100% {
+    margin-top: 112rpx;
+  }
+}
+
+@keyframes pvOpacity {
+  0% {
+    opacity: 0;
+  }
+
+  70% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+/* 蒙层 */
+.Mengcen{
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  background-color: rgba(0,0,0,0.4);
+  top:0;
+  z-index: 11;
+}
+
+.change{
+  width: 526rpx;
+  height: 360rpx;
+  background-color: white;
+  margin: 0 auto;
+  margin-top: 130rpx;
+  padding-top: 32rpx;
+  box-sizing: border-box;
+  border-radius: 12px;
+}
+.tip{
+  color: #333;
+  font-size: 26rpx;
+  text-align: center;
+
+}
+.input_section {
+  width:404rpx;
+  margin: 0 auto;
+  font-size: 26rpx;
+  height: 64rpx;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #EFEFF5;
+  color: #333;
+  margin-top: 66rpx;
+  border-radius: 8px;
+}
+
+.input_section text {
+  font-size: 24rpx;
+  color: #999;
+  margin-right: 20rpx;
+}
+
+.inputerea {
+  width:404rpx;
+  height: 64rpx;
+  line-height: 64rpx;
+  font-size: 26rpx;
+  color: #333;
+  margin-left: 26rpx;
+}
+
+.example-text-erea {
+  height: 74rpx;
+  line-height: 74rpx;
+  font-size: 24rpx;
+  color: #b2b2b2;
+  padding: 0 25rpx;
+}
+.cancel{
+  width: 206rpx;
+  height: 72rpx;
+  color: #fff;
+  font-size: 30rpx;
+  background-color: #999;
+  border-radius: 50rpx;
+  text-align: center;
+}
+.cancel_confirm{
+padding:0 41rpx;
+margin-top: 67rpx;
+display: flex;
+flex-flow: row wrap;
+justify-content:space-between;  
+}          
+.submit {
+  width: 206rpx;
+  height: 72rpx;
+  font-size:30rpx;
+  background-color: #fff04a;
+  border-radius: 50rpx;
+  color: #333;
+  text-align: center;
+}
+.disabled {
+  background: #cecece;
+  color: #fff;
+}
+button::after{
+  border: 0;
+}
+
+
+
+/* lunbo */
+
+/**index.wxss**/
+
+.imgSliderBox {
+  position: relative;
+  width: 100%;
+  height: 736rpx;
+  margin-top: 57rpx;
+}
+
+.sliderImg {
+  position: absolute;
+  transition: all 0.3s ease-out;
+  border-radius: 12rpx;
+  background: rgba(76, 76, 76, 0.4);
+   box-shadow: 0px 5px 15px 0px rgba(76, 76, 76, 0.4); 
+   background-color: white;
+}
+
+.sliderImg image {
+  width: 100%;
+  height: 100%;
+  vertical-align: bottom;
+  border-radius: 12rpx;
+}
+
+.pic1 {
+  width: 461rpx;
+  height: 736rpx;
+  top: 0;
+  left: 72rpx;
+  opacity: 1;
+  z-index: 5;
+}
+
+.pic2 {
+  width: 399rpx;
+  height: 638rpx;
+  top: 49rpx;
+  left: 205rpx;
+  opacity: 0.9;
+  z-index: 4;
+}
+
+.pic3 {
+  width: 337rpx;
+  height: 538rpx;
+  top: 99rpx;
+  left: 321rpx;
+  opacity: 0.5;
+  z-index: 3;
+}
+
+.pic4 {
+  width: 337rpx;
+  height: 538rpx;
+  top: 99rpx;
+  left: -450rpx;
+  opacity: 0.2;
+  z-index: 2;
+}
+
+/* 相册名子部分 */
+
+.titleSliderBox {
+  width: 596rpx;
+  height: 104rpx;
+  margin-left: 74rpx;
+   /* padding-top: 50rpx;  */
+     /* margin-top: 50rpx;    */
+  position: relative;
+  overflow: hidden;
+}
+
+.sliderTitle {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: all 0.3s ease-out;
+}
+
+.groupName {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.groupName text {
+  font-size: 38rpx;
+  line-height: 38rpx;
+  color: #333;
+  display: block;
+  width: 400rpx;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  font-weight: 500;
+}
+
+.groupName image {
+  width: 33rpx;
+  height: 33rpx;
+  margin-left: 164rpx;
+}
+
+.groupDetail {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin-top: 34rpx;
+}
+
+.groupDetail text {
+  color: #333;
+  font-size: 26rpx;
+  margin-right: 102rpx;
+}
+
+.groupDetail image {
+  width: 24rpx;
+  height: 24rpx;
+  margin-right: 26rpx;
+}
+
+.title1 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  opacity: 1;
+}
+
+.title2 {
+  position: absolute;
+  /* top: 104rpx;
+  left: 0; */
+  top: 0;
+  left: 600rpx;
+  opacity: 0;
+}
+
+.title3 {
+  position: absolute;
+  /* top: -104rpx;
+  left: 0; */
+  top: 0;
+  left: -600rpx;
+  opacity: 0;
+}
+
+
+
+/* pages/personal/personal.wxss */
+.indexhtml{
+  position: absolute;
+  left: -120%;
+  top:0;
+  z-index: 1000;
+  width: 100%;
+  height: 100%;
+  background-color: white;
+  transition: left 0.4s ease
+}
+ .personalhtml{
+  left:0;
+  height: 100%;
+} 
+.topInfo{
+  display: flex;
+  padding-bottom: 76rpx;
+}
+.myImg{
+  margin:  112rpx 50rpx 0  50rpx;
+}
+.myImg image{
+  width: 152rpx;
+  height: 152rpx;
+  border-radius: 50%;
+  box-shadow: 0px 5px 13px 0px rgba(76,76,76,0.24);
+}
+.personaltextInfo{
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin-top: 124rpx;
+}
+.name_RAM{
+  display: flex;
+  position: relative;
+}
+.nickName{
+  font-weight:500;
+  font-size:34rpx;
+  color: #333;
+  width: 200rpx;
+  white-space: nowrap;
+  overflow: hidden;
+	text-overflow:ellipsis;
+}
+
+.RAM{
+ position: absolute;
+ right: 74rpx;
+ font-size: 22rpx;
+ color: #333;
+ margin-top: 12rpx;
+}
+.progress{
+  width: 448rpx; 
+  border-radius: 10rpx;
+  margin-top: 20rpx;
+  margin-bottom: 20rpx;
+}
+progress{
+   border-radius: 10rpx;
+}
+.free{
+  font-size: 26rpx;
+}
+.free image{
+  width: 40rpx;
+  height: 21rpx;
+  margin-left: 14rpx;
+}
+/* 菜单 */
+.personalmenu{
+  
+}
+.personalmenu view{
+  margin-top: 72rpx;
+  position: relative;
+}
+.personalmenu view image:nth-child(1){
+  width: 37rpx;
+  height: 37rpx;
+  vertical-align: middle;
+  margin: 0 34rpx 0 50rpx;
+}
+.personalmenu view text{
+  font-size: 30rpx;
+  color: #333;
+}
+.personalmenu view image:nth-child(3){
+  width: 14rpx;
+  height: 24rpx;
+  position: absolute;
+  right: 50rpx;
+  top:15rpx;
+}
+switch{
+ position: absolute;
+ right: 35rpx;  
+}
+
+/* 底部 */
+.personalfoot{
+   display: flex; 
+    position: fixed; 
+   bottom: 54rpx;  
+  margin-left: 222rpx;
+}
+.personalcompany {
+  text-align: right;
+  font-size: 22rpx;
+  color: #999;
+}
+.personalcompany view:nth-child(1){
+  margin-bottom: 8rpx;
+}
+.personalclose{
+  margin-left: 160rpx;
+  margin-top: 6rpx;
+}
+.personalclose image{
+  width: 56rpx;
+  height: 56rpx;
+}

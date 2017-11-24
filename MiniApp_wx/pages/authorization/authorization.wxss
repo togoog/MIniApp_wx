@@ -1,0 +1,18 @@
+/* pages/authorization/authorization.wxss */
+.section{
+  width:100%;
+  display: flex;
+  flex-direction: column;
+  align-items:center;
+
+}
+.iconPic{
+  width:536rpx;
+  height:321rpx;
+  margin-top:354rpx;
+}
+.resetBtn{
+  margin-top:62rpx;
+  width:341rpx;
+  height:75rpx;
+}

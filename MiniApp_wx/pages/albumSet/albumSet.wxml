@@ -1,0 +1,62 @@
+<!--pages/albumSet/albumSet.wxml-->
+<view class='menu'>
+    <view catchtap='edit'>
+      <image src='http://oibl5dyji.bkt.clouddn.com/20171022151703.png'></image>
+      <text>修改相册名</text>
+      <image src='http://oibl5dyji.bkt.clouddn.com/20171022134402.png'></image>
+    </view>
+    <!-- <view>
+      <image src='http://oibl5dyji.bkt.clouddn.com/20171022151704.png'></image>
+      <text>动态推送</text>
+      <switch color="#fae100"  checked bindchange="switch1Change"/>
+      
+    </view> -->
+     <!-- <view>
+      <image src='http://oibl5dyji.bkt.clouddn.com/20171022151702.png'></image>
+      <text>分享照片</text>
+      <image id='shareicon' src='http://oibl5dyji.bkt.clouddn.com/20171022151707.png'></image>
+    </view> -->
+    <view catchtap='gotoaddset'>
+      <image src='http://oibl5dyji.bkt.clouddn.com/20171022151705.png'></image>
+      <text>谁可以添加照片</text>
+     <image src='http://oibl5dyji.bkt.clouddn.com/20171022134402.png'></image>
+    </view>
+    <view>
+      <button hover-class='none'  open-type='contact'>
+        <image src='http://oibl5dyji.bkt.clouddn.com/20171022151706.png'></image>
+      <text>在线客服</text>
+      <image src='http://oibl5dyji.bkt.clouddn.com/20171022134402.png'></image>
+      </button>
+    
+    </view>
+</view>
+<view class='back'>
+  <view wx:if="{{ createrid == userid }}" catchtap='deletegroup'>
+    删除相册
+  </view>
+  <view wx:else catchtap='leavegroup'>
+    退出相册
+  </view>
+</view>
+
+<block wx:if="{{Mengcen}}">
+<view class="Mengcen">
+    <view class='change'>
+          <view class='tip'>相册标题</view>
+          <form report-submit="true" bindsubmit="submitfun">
+            <view class="input_section">
+              <input bindinput="setcolor" value="{{value}}" class="inputerea" focus='true' name="groupname" placeholder-style="color:#999" placeholder="新相册名称" maxlength="16"/>
+              <text>{{textNum}}/16</text>
+            </view>
+            <view class='cancel_confirm'>
+             <view class="btn-area">
+              <button class="Mengcen_cancel" catchtap='Mengcen_cancel' >取消</button>
+            </view>
+            <view class="btn-area">
+              <button class="Mengcen_submit" formType="submit">确认</button>
+            </view>
+            </view>
+        </form>
+    </view>
+</view>
+</block>

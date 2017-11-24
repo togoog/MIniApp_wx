@@ -1,0 +1,73 @@
+<!--pages/setting/addmember/addmember.wxml-->
+
+<view class="mem-container">
+  <!-- 大于100人 -->
+  <view class="greater" wx:if="{{gnum > 100}}">
+    <!-- 搜索 -->
+    <view class="s-header">
+      <view class="serchBox">
+        <image class="searchImg" src="http://oibl5dyji.bkt.clouddn.com/20170806134522.png"></image>
+        <input confirm-type="search" name="searchText" bindconfirm="searchList" value="{{value}}" placeholder="点击输入相册名称搜索" class="Search" placeholder-style="color:rgb(153,153,153);" />
+        <image wx:if="{{start}}" catchtap="closeReset" class="close" src="http://oibl5dyji.bkt.clouddn.com/20170911175731.png"></image>
+      </view>
+    </view>
+    <view class="searchBox">
+      <view class="groupItem" data-add="{{index}}" catchtap="addRest"  wx:for="{{searchList}}" wx:key="{{index}}">
+        <image mode="aspectFill" class="listUpic" src="{{item.upic}}"></image>
+        <text>{{item.unickname}}</text>
+        <image wx:if="{{item.select}}" src="http://oibl5dyji.bkt.clouddn.com/20170916215933ed.png"></image>
+        <image wx:else src="http://oibl5dyji.bkt.clouddn.com/20170916215933.png"></image>
+      </view>
+    </view>
+    <view class="kongBg"></view>
+    <view class="confirmMember">
+      <view class="groupItem" data-rest="{{index}}" catchtap="changeRestList" wx:for="{{restList}}" wx:key="{{index}}">
+        <image mode="aspectFill" class="listUpic" src="{{item.upic}}"></image>
+        <text>{{item.unickname}}</text>
+        <image wx:if="{{item.select}}" src="http://oibl5dyji.bkt.clouddn.com/20170916215933ed.png"></image>
+        <image wx:else src="http://oibl5dyji.bkt.clouddn.com/20170916215933.png"></image>
+      </view>
+      <view class="groupItem" wx:for="{{createList}}" wx:key="{{index}}">
+        <image mode="aspectFill" class="listUpic" src="{{item.upic}}"></image>
+        <text>{{item.unickname}}</text>
+        <image wx:if="{{item.select}}" src="http://oibl5dyji.bkt.clouddn.com/20170916215933ed.png"></image>
+        <image wx:else src="http://oibl5dyji.bkt.clouddn.com/20170916215933.png"></image>
+      </view>
+      <view class="groupItem" data-sel="{{index}}" catchtap="changeSelList" wx:for="{{selectList}}" wx:key="{{index}}">
+        <image mode="aspectFill" class="listUpic" src="{{item.upic}}"></image>
+        <text>{{item.unickname}}</text>
+        <image wx:if="{{item.select}}" src="http://oibl5dyji.bkt.clouddn.com/20170916215933ed.png"></image>
+        <image wx:else src="http://oibl5dyji.bkt.clouddn.com/20170916215933.png"></image>
+      </view>
+    </view>
+  </view>
+  <!-- 小于100人 -->
+  <view class="less" wx:else>
+    <view class="lessList">
+      <!-- 管理员 -->
+      <view class="groupItem" wx:for="{{createList}}" wx:key="{{index}}">
+        <image mode="aspectFill" class="listUpic" src="{{item.upic}}"></image>
+        <text>{{item.unickname}}</text>
+        <image wx:if="{{item.select}}" src="http://oibl5dyji.bkt.clouddn.com/20170916215933ed.png"></image>
+        <image wx:else src="http://oibl5dyji.bkt.clouddn.com/20170916215933.png"></image>
+      </view>
+      <!-- 选中者 -->
+      <view class="groupItem" data-sel="{{index}}" catchtap="changeSelList" wx:for="{{selectList}}" wx:key="{{index}}">
+        <image mode="aspectFill" class="listUpic" src="{{item.upic}}"></image>
+        <text>{{item.unickname}}</text>
+        <image wx:if="{{item.select}}" src="http://oibl5dyji.bkt.clouddn.com/20170916215933ed.png"></image>
+        <image wx:else src="http://oibl5dyji.bkt.clouddn.com/20170916215933.png"></image>
+      </view>
+      <!-- 未选中 -->
+      <view class="groupItem" data-rest="{{index}}" catchtap="changeRestList" wx:for="{{restList}}" wx:key="{{index}}">
+        <image mode="aspectFill" class="listUpic" src="{{item.upic}}"></image>
+        <text>{{item.unickname}}</text>
+        <image wx:if="{{item.select}}" src="http://oibl5dyji.bkt.clouddn.com/20170916215933ed.png"></image>
+        <image wx:else src="http://oibl5dyji.bkt.clouddn.com/20170916215933.png"></image>
+      </view>
+    </view>
+  </view>
+</view>
+<view class="confirmBtn">
+  <view catchtap="release">确认</view>
+</view>

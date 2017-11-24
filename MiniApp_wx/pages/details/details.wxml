@@ -1,0 +1,245 @@
+<!--pages/details/details.wxml-->
+ <!-- <view class='{{toseeVideo?"noscroll":""}}'>  -->
+<!-- <scroll-view scroll-y > -->
+      <view catchtap='gotoalbumset' class='setting'>
+    <image src='http://oibl5dyji.bkt.clouddn.com/201710230927011.png'></image>
+  </view>
+  <view class='template'>
+    <view class='albumInfo'>
+      <view class='titleInfo'>
+        <view class='titlebox'>
+          <text class='title'>{{ablumInfo.gname}}</text>
+        </view>
+        <!--是否具有修改相册名的权限  -->
+        <block wx:if="{{myid == ablumInfo.gcreator}}">
+          <image class='edit' catchtap='edit' src='http://oibl5dyji.bkt.clouddn.com/20171023092708.png'></image>
+        </block>
+      </view>
+    </view>
+    <block wx:if="{{init}}">
+      <view class='memberInfo'>
+        <view catchtap='gotoMemberlist' class='totalNum'>
+          {{ablumInfo.gnum}}
+        </view>
+        <view class='userList'>
+          <block wx:for='{{ablumInfo.list}}'>
+            <image wx:if="{{index < 4 }}" src='{{item.upic}}'></image>
+          </block>
+        </view>
+        <view>
+          <button open-type='share' class='buttonShare'>
+            <image src='http://oibl5dyji.bkt.clouddn.com/20171023092705.png'></image>
+          </button>
+        </view>
+      </view>
+
+      <view class='contentInfo'>
+
+        <view class="section">
+          <image class='allpicicon' src='http://oibl5dyji.bkt.clouddn.com/20171023092701.png'></image>
+          <view class='picker' catchtap='alertCheckData'>
+            <text>{{checkData}}({{totalPicNum}}张)</text>
+          </view>
+        </view>
+
+        <view catchtap='{{sortType}}' class='sort'>
+          <image class='sorticon' src='http://oibl5dyji.bkt.clouddn.com/20171119135400.png'></image>
+          <view class='picker'>
+            <text>{{sortText}}</text>
+          </view>
+        </view>
+
+        <view catchtap='select' class='select'>
+          <image src='http://oibl5dyji.bkt.clouddn.com/20171023092703.png'></image>
+          <view class='picker'>
+            <text> 选择</text>
+          </view>
+        </view>
+
+      </view>
+    </block>
+
+
+    <view class='picContent'>
+      <!-- 渲染图片 有数据-->
+      <block wx:if="{{ imgUrl.length > 0}}">
+        <view catchtap='{{type}}' wx:for="{{imgUrl}}" data-mymain="{{item.myMain}}" data-pid="{{item.pid}}" data-index="{{index}}" class='picbox'>
+          <image class='photo' mode='aspectFill' src='{{item.thumbnail}}'></image>
+          <view class='mengcen' wx:if="{{index < hastempcontent }}" >
+              <text>{{item.progress?item.progress:0}}%</text>
+          </view>
+          <!-- 是否为视频 -->
+          <icon wx:if="{{item.myMain == 4}}"></icon>
+
+          <!--选择状态下  -->
+          <block wx:if="{{!normal}}">
+            <view class='mengcen' wx:if="{{item.cheaked}}" >
+              <!-- <text wx:if="{{downloadprogressmengcen}}">{{item.progress}}%</text> -->
+            </view>
+            <image wx:if="{{item.cheaked}}" data-index="{{index}}" class="selectRadio" src="http://oibl5dyji.bkt.clouddn.com/20171023092709.png"></image>
+            <image wx:else class="selectRadio" data-index="{{index}}" src="http://oibl5dyji.bkt.clouddn.com/201710230927010.png"></image>
+          </block>
+    
+        </view>
+      </block>
+      <!--没数据  -->
+      <block wx:else>
+        <view class='nopic'>
+          <image mode='aspectFill' src='http://oibl5dyji.bkt.clouddn.com/20171119140723.png'></image>
+        </view>
+      </block>
+    </view>
+  </view>
+
+  <!-- 正常按钮添加图片 -->
+  <block wx:if="{{normal}}">
+    <view catchtap='addpicRadio' class='normalMenu'>
+      <image src='http://oibl5dyji.bkt.clouddn.com/20171023092706.png'></image>
+    </view>
+  </block>
+
+  <!-- 编辑情况下的菜单 -->
+  <block wx:if="{{editType}}">
+    <view class='editMenu'>
+       <view>
+          <image wx:if='{{choosepid.length>0}}' catchtap='downloadRadio' class='downloadRadio' src='http://oibl5dyji.bkt.clouddn.com/20171023092704.png'></image>
+          <image wx:else  class='downloadRadio' src='http://oibl5dyji.bkt.clouddn.com/20171109104054.png'></image>
+      
+      </view> 
+      <view>
+        <image wx:if='{{choosepid.length>0}}' catchtap='gotoshare' class='shareRadio' src='http://oibl5dyji.bkt.clouddn.com/201710230927012.png'></image>
+        <image wx:else class='shareRadio'  src=' http://oibl5dyji.bkt.clouddn.com/20171109104101.png'></image>
+    
+      </view>
+      <view>
+        <image class='del' wx:if='{{choosepid.length>0}}' catchtap='del' src='http://oibl5dyji.bkt.clouddn.com/201710230927013.png'></image>
+        <image class='del' wx:else  src='http://oibl5dyji.bkt.clouddn.com/20171109104045.png'></image>
+      </view>
+      <view>
+        <image catchtap='cancel' class='cancel' src='http://oibl5dyji.bkt.clouddn.com/20171023092702.png'></image>
+      </view>
+    </view>
+
+  </block>
+
+  <block wx:if="{{Mengcen}}">
+    <view class="Mengcen">
+      <view class='change'>
+        <view class='tip'>相册标题</view>
+        <form report-submit="true" bindsubmit="submitfun">
+          <view class="input_section">
+            <input bindinput="setcolor" value="{{value}}" class="inputerea" name="groupname" focus='true' placeholder-style="color:#999" placeholder="新相册名称" maxlength="16" />
+            <text>{{textNum}}/16</text>
+          </view>
+          <view class='cancel_confirm'>
+            <view class="btn-area">
+              <button class="Mengcen_cancel" catchtap='Mengcen_cancel'>取消</button>
+            </view>
+            <view class="btn-area">
+              <button class="Mengcen_submit" formType="submit">确认</button>
+            </view>
+          </view>
+        </form>
+      </view>
+    </view>
+  </block>
+
+  <!--点击加号弹出模态框-->
+  <view class="pvModel" wx:if="{{pvShowModel}}">
+    <view class="pvModel-box" catchtap="closepvModel">
+      <view class="pvModel-main">
+        <view class="mainItem" catchtap="uploadpic" data-pic="pai">
+          <text>拍照片</text>
+        </view>
+        <view class="mainItem" catchtap="uploadpic" data-pic="phone" style="margin-bottom:16rpx;">
+          <text>相册照片</text>
+        </view>
+        <view class="mainItem" catchtap="uploadvideo" data-video="pai">
+          <text>拍视频</text>
+        </view>
+        <view class="mainItem" catchtap="uploadvideo" data-video="phone" style="margin-bottom:16rpx;">
+          <text>相册视频</text>
+        </view>
+        <view class="mainItem">
+          <image src="http://oibl5dyji.bkt.clouddn.com/20170927152721.png"></image>
+        </view>
+      </view>
+    </view>
+  </view>
+
+  <!--点击查看视频  -->
+  <block wx:if="{{toseeVideo}}">
+    <view class='seeVideo'>
+      <view class='videobox'>
+        <video fixed="true" src="{{videoUrl}}"></video>
+        <image catchtap='closeSeeVideo' class='closeSeeVideo' src='http://oibl5dyji.bkt.clouddn.com/20171027110629.png'></image>
+      </view>
+    </view>
+  </block>
+
+  <!-- 查询功能 -->
+  <block wx:if="{{checkFeatures}}">
+    <view catchtap='cancelCheck' class='checkFeatures'>
+      <view catchtap='cancelCheck' class='checkBox'>
+        <view catchtap='seeallpics' class='allpictext'>
+          <image class='allpicimg' src='http://oibl5dyji.bkt.clouddn.com/20171108112233.png'></image>
+        </view>
+        <view>
+          <picker mode="date" value="{{date}}" fields="month" bindchange="bindDateChange">
+            <image class='checkimg' src='http://oibl5dyji.bkt.clouddn.com/20171108112317.png'></image>
+          </picker>
+        </view>
+
+        <view class='checkCancel'>
+          <image class='checkcancelimg' src='http://oibl5dyji.bkt.clouddn.com/20171108112300.png'></image>
+        </view>
+      </view>
+    </view>
+  </block>
+
+
+  <block wx:if="{{showTop}}">
+    <view class="navfixed">
+
+
+      <view class='contentInfo'>
+
+        <view class="section">
+
+          <image class='allpicicon' src='http://oibl5dyji.bkt.clouddn.com/20171023092701.png'></image>
+          <view class='picker' catchtap='alertCheckData'>
+            <text>{{checkData}}({{totalPicNum}}张)</text>
+          </view>
+
+          <!-- <picker mode="date" value="{{date}}" fields="month"  disabled='{{disabled}}' bindchange="bindDateChange">
+            <view>
+              <text>{{checkData}}({{totalPicNum}}张)</text> 
+            </view>  
+        </picker> -->
+
+        </view>
+        <view catchtap='{{sortType}}' class='sort'>
+          <image class='sorticon' src='http://oibl5dyji.bkt.clouddn.com/20171023092707.png'></image>
+          {{sortText}}
+        </view>
+        <view catchtap='select' class='select'>
+          <image src='http://oibl5dyji.bkt.clouddn.com/20171023092703.png'></image>
+          选择
+        </view>
+      </view>
+    </view>
+  </block>
+ <!-- </view>  -->
+
+
+<!-- 反回首页的按钮 -->
+<view class="toGoHome {{showTop ? 'home1' : ''}}" catchtap="goHome">
+  <image src="http://oibl5dyji.bkt.clouddn.com/20171024113030.png"></image>
+</view>
+<!-- </scroll-view> -->
+<!-- loading -->
+<block wx:if="{{loading}}">
+<view class='loading'>
+  <image mode='aspectFill' src='http://oibl5dyji.bkt.clouddn.com/loading.gif'></image>
+</view>
+</block>
