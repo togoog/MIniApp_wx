@@ -175,8 +175,8 @@ Page({
               return;
             }
             wx.request({
-              url: "https://api.zhuiyinanian.com/YinianProject/simH5/getShareValue",
-              // url:"http://192.168.199.204:8080/YinianProject/simH5/getShareValue",
+              url: "",
+            
               data: {
                 id: wx.getStorageSync("shareId")
               },
