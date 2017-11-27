@@ -40,7 +40,7 @@ Page({
     }
     this.userid = wx.getStorageSync('userid');
     wx.request({
-      url: 'https://api.zhuiyinanian.com/YinianProject/space/ShowGroupMember',
+      url: '',
       data: {
         userid: wx.getStorageSync('userid'),
         groupid: wx.getStorageSync('groupid'),
@@ -127,7 +127,7 @@ Page({
       mask: true
     })
     wx.request({
-      url: 'https://api.zhuiyinanian.com/YinianProject/space/SearchSpaceMembersReturnFormat',
+      url: 'h',
       data:{
         groupid: wx.getStorageSync('groupid'),
         name: searchText
@@ -180,7 +180,7 @@ Page({
         icon: 'loading'
       })
       wx.request({
-        url: 'https://api.zhuiyinanian.com/YinianProject/yinian/KickMembers',
+        url: '',
         data: {
           userid: tempArr.join(','),
           groupid: wx.getStorageSync('groupid'),
@@ -227,7 +227,7 @@ Page({
       duration: 5000
     })
     wx.request({
-      url: 'https://api.zhuiyinanian.com/YinianProject/space/ShowGroupMember',
+      url: '',
       data: {
         userid: wx.getStorageSync('userid'),
         groupid: wx.getStorageSync('groupid'),
