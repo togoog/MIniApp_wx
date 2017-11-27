@@ -79,7 +79,7 @@ Page({
   getUserInfo: function () {
     var that = this;
     util.wxreq({
-      pathname: 'YinianProject/yinian/GetUserData',
+      pathname: '',
       data: { userid: that.userid }
     }).then(res => {
       console.log(res)
@@ -92,7 +92,7 @@ Page({
   getOtherInfo: function () {
     var that = this;
     util.wxreq({
-      pathname: 'YinianProject/event/GetSpaceMemberPhotoNum',
+      pathname: '',
       data: {
         userid: that.userid,
         groupid : that.groupid
@@ -109,7 +109,7 @@ Page({
   getOtherPhotoWall: function () {
     var that = this;
     util.wxreq({
-      pathname: 'YinianProject/event/ShowSpaceMemberEvents',
+      pathname: '',
       data: {
         userid: that.userid,
         groupid: that.groupid,
@@ -152,7 +152,7 @@ Page({
   getuserphotowall: function () {
     var that = this;
     util.wxreq({
-      pathname: 'YinianProject/event/ShowMe2ndVersion',
+      pathname: '',
       data: {
         userid: that.userid,
         minID: 0,
@@ -201,7 +201,7 @@ Page({
       icon: "loading"
     })
     util.wxreq({
-      pathname: "YinianProject/event/ShowSpaceMemberEvents",
+      pathname: "",
       data: {
         userid: that.userid,
         groupid: that.groupid,
@@ -253,7 +253,7 @@ Page({
       icon: "loading"
     })
     util.wxreq({
-      pathname: "YinianProject/event/ShowMe2ndVersion",
+      pathname: "",
       data: {
         userid: that.userid,
         minID: that.data.photopagedata_day[that.data.photopagedata_day.length - 1].eid,
