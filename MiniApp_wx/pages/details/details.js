@@ -54,7 +54,7 @@ function nosearchtimefirstcheck(){
       }
       //把首页的选择的图片临时加载到详情页面
       //先判断有没有临时数据
-      if (wx.getStorageSync("uploadchoosedpic")){
+      if (wx.getStorageSync("uploadchoosedpic") && (wx.getStorageSync("groupid") == app.eid) ){
         var picarr = wx.getStorageSync("uploadchoosedpic");
         console.log(picarr)
         var temparrs = [];
@@ -70,9 +70,10 @@ function nosearchtimefirstcheck(){
         let a = getCurrentPages();
         let curpage = a[a.length - 1];
         console.log(curpage)
-       wx.showLoading({
-         title: '正在上传',
-       })
+      //  wx.showLoading({
+      //    title: '正在上传',
+      //  })
+       app.status = 2
       curpage.setData({
           imgUrl: temparrs.concat(data),
           hastempcontent: picarr.length,
@@ -80,7 +81,7 @@ function nosearchtimefirstcheck(){
           hasPic: true,
         })
       }
-      else if (wx.getStorageSync("uploadchoosedvideo")){
+      else if (wx.getStorageSync("uploadchoosedvideo")&&(wx.getStorageSync("groupid") == app.eid)){
         var uploadchoosedvideo = wx.getStorageSync("uploadchoosedvideo");
         var temparr =[]
         var tempobj={};
@@ -90,9 +91,10 @@ function nosearchtimefirstcheck(){
         console.log(temparr);
         let a = getCurrentPages();
         let curpage = a[a.length - 1];
-        wx.showLoading({
-          title: '正在上传',
-        })
+        // wx.showLoading({
+        //   title: '正在上传',
+        // })
+        app.status = 2
         curpage.setData({
           imgUrl: temparr.concat(data),
           hastempcontent: temparr.length,
@@ -123,7 +125,7 @@ function uploadpicasync(a, b) {
       url: api.getUrl("YinianProject/event/UploadEvent"),
       data: {
         userid: wx.getStorageSync("userid"),
-        groupid: wx.getStorageSync("groupid"),
+        groupid: app.eid,
         content: wx.getStorageSync("content"),
         picAddress: picaddress.join(','),
         storage: picaddress.length * 300,
@@ -163,7 +165,8 @@ function uploadpicasync(a, b) {
           duration: 1000
         })
         //解除禁止上传
-        app.u = false
+        app.u = false;
+        app.status = 1;
         wx.removeStorageSync('uploadchoosedpic');
         wx.removeStorageSync('uploadchoosedvideo');
         wx.removeStorageSync('place');
@@ -175,7 +178,6 @@ function uploadpicasync(a, b) {
         curpage.setData({
           hastempcontent:0
         })
-
 
         // console.log(res.data.data[0].picList.length, picaddress.length);
         if (res.data.data[0].picList.length == 0) {
@@ -259,7 +261,7 @@ function uppic(token, uparr, totalpicarr) {
       console.log(data)
       // 照片上传的张数
       console.log(picaddress.length);
-
+      app.status = 2
       let a = getCurrentPages();
       let curpage = a[a.length - 1];
       curpage.setData({
@@ -327,6 +329,7 @@ Page({
   onLoad: function (options) {
     // 统计需要的字段
     app.b = 1;
+    console.log(app.status)
     if (options.version) {
       this.version = options.version;
     }
@@ -367,6 +370,9 @@ Page({
     console.log(this.from)
     try {
       wx.setStorageSync('groupid', parseInt(options.groupid));
+      // if (wx.getStorageSync("groupid")){
+      //   wx.removeStorageSync("groupid");
+      // }
       // wx.setStorageSync("from", options.from)
     } catch (e) {
       // console.log(e);
@@ -769,8 +775,12 @@ uploadtemppic:function(){
   var picarr = wx.getStorageSync("uploadchoosedpic");
         //禁止上传
         app.u = true;
-  // 获取图片上传token
-        wx.request({
+        //正在上传2  1表示没有上传  
+        console.log(app.status)
+        if (app.status == 1){
+          app.eid = wx.getStorageSync("groupid")
+          // 获取图片上传token
+          wx.request({
             url: api.getUrl('YinianProject/yinian/GetPrivateSpaceUploadToken'),
             data: {},
             method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
@@ -778,10 +788,13 @@ uploadtemppic:function(){
             success: function (res) {
               console.log(res);
               if (res.data.code === 0) {
+                app.status == 2
                 uploadpicasync(res.data.data[0].token, picarr);
               }
             }
-        })
+          })
+        }
+
 },
 //  首页进来上传视频
 uploadtempvideo: function () {
@@ -789,113 +802,258 @@ uploadtempvideo: function () {
   var picarr = wx.getStorageSync("uploadchoosedvideo");
   //禁止上传
   app.u = true
-  // 获取上传token
+  if(app.status == 1){
+    app.eid = wx.getStorageSync("groupid")
+    // 获取上传token
     wx.request({
-        url: api.getUrl('YinianProject/yinian/GetPrivateSpaceUploadToken'),
-        data: {},
-        method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-        // header: {}, // 设置请求的 header
-        success: function (res) {
-          var token = res.data.data[0].token;
-          // var val = that.data.choosevideo;
-          var val = picarr
-          const uploadTask = wx.uploadFile({
-            url: 'https://upload.qiniup.com',
-            filePath: val,
-            name: 'file',
-            formData: {
-              'key': val.split('//')[1],
-              'token': token
-            },
-            success: function (res) {
-              that.setData({
-                uploadnum: 1
-              })
-              var data = JSON.parse(res.data);
-              var address = data.key;
-              wx.request({
-                url: api.getUrl("YinianProject/event/UploadShortVideo"),
-                method: 'GET',
-                data: {
-                  userid: wx.getStorageSync("userid"),
-                  groupid: wx.getStorageSync('groupid'),
-                  content: '',
-                  address: address,
-                  storage: 6000,
-                  place: ''
-                },
-                success: function (res) {
-                  app.u = false
-                  console.log(res);
-                  wx.showToast({
-                    title: '上传完成',
-                    icon: 'success',
-                    duration: 1000
-                  })
-                  wx.removeStorageSync("uploadchoosedvideo");
-                  nosearchtimefirstcheck();
-                  that.setData({
-                    hastempcontent: 0
-                  })
-                  if (res.statusCode != 200) {
-                    // wx.removeStorageSync('uploadchoosedvideo');
-                    // wx.removeStorageSync('place');
-                    wx.hideToast();
-                    wx.showModal({
-                      title: '提示',
-                      content: '网络忙，请重试',
-                      showCancel: false,
-                      success: function (res) {
-                        if (res.confirm) {
-                          wx: wx.navigateBack({
-                            delta: 1,
-                          })
-                        }
-                      }
-                    })
-                    return;
-                  }
-                  // wx.hideToast();
-                  app.a = 1
-                  console.log("上传视频成功");
-                  return
+      url: api.getUrl('YinianProject/yinian/GetPrivateSpaceUploadToken'),
+      data: {},
+      method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
+      // header: {}, // 设置请求的 header
+      success: function (res) {
+       
+        var token = res.data.data[0].token;
+        // var val = that.data.choosevideo;
+        var val = picarr
+        const uploadTask = wx.uploadFile({
+          url: 'https://upload.qiniup.com',
+          filePath: val,
+          name: 'file',
+          formData: {
+            'key': val.split('//')[1],
+            'token': token
+          },
+          success: function (res) {
+            that.setData({
+              uploadnum: 1
+            })
+            var data = JSON.parse(res.data);
+            var address = data.key;
+            wx.request({
+              url: api.getUrl("YinianProject/event/UploadShortVideo"),
+              method: 'GET',
+              data: {
+                userid: wx.getStorageSync("userid"),
+                groupid: app.eid,
+                content: '',
+                address: address,
+                storage: 6000,
+                place: ''
+              },
+              success: function (res) {
+                app.u = false
+                app.status = 1
+                console.log(res);
+                wx.showToast({
+                  title: '上传完成',
+                  icon: 'success',
+                  duration: 1000
+                })
+                wx.removeStorageSync("uploadchoosedvideo");
+                nosearchtimefirstcheck();
+                that.setData({
+                  hastempcontent: 0
+                })
+                if (res.statusCode != 200) {
                   // wx.removeStorageSync('uploadchoosedvideo');
                   // wx.removeStorageSync('place');
-                  // App.vedioData = res.data.data[0];
-                  // wx.redirectTo({
-                  //   url: '../commonpage/showvideoAfterupload/showvideoAfterupload'
-                  // })
-                },
-                fail:function(){
-                  app.u = false
+                  wx.hideToast();
+                  wx.showModal({
+                    title: '提示',
+                    content: '网络忙，请重试',
+                    showCancel: false,
+                    success: function (res) {
+                      if (res.confirm) {
+                        wx: wx.navigateBack({
+                          delta: 1,
+                        })
+                      }
+                    }
+                  })
+                  return;
                 }
-              })
-            },
-            fail: function (res) {
-              app.u = false
-              console.log(res);
-            }
+                // wx.hideToast();
+                app.a = 1
+                console.log("上传视频成功");
+                
+                return
+                // wx.removeStorageSync('uploadchoosedvideo');
+                // wx.removeStorageSync('place');
+                // App.vedioData = res.data.data[0];
+                // wx.redirectTo({
+                //   url: '../commonpage/showvideoAfterupload/showvideoAfterupload'
+                // })
+              },
+              fail: function () {
+                app.u = false
+              }
+            })
+          },
+          fail: function (res) {
+            app.u = false
+            console.log(res);
+            app.status = 1
+          }
+        })
+        uploadTask.onProgressUpdate((res) => {
+          console.log('上传进度', res.progress)
+          //上传图片所对应的在imgUrl中的位置
+          that.setData({
+            hastempcontent: 1
           })
-          uploadTask.onProgressUpdate((res) => {
-            console.log('上传进度', res.progress)
-            //上传图片所对应的在imgUrl中的位置
-            that.setData({
-              hastempcontent: 1
-            })
-            // 更新该图片的下载进度，
-            that.data.imgUrl[0].progress = parseInt(res.progress) 
-            //当上传进度为100时及下载完成，隐藏该图片的进度文字
-            if (res.progress == 100) {
-              that.data.imgUrl[0].mengchen = false;
-            }
-            that.setData({
-              imgUrl: that.data.imgUrl
-            })
+          // 更新该图片的下载进度，
+          that.data.imgUrl[0].progress = parseInt(res.progress)
+          //当上传进度为100时及下载完成，隐藏该图片的进度文字
+          if (res.progress == 100) {
+            that.data.imgUrl[0].mengchen = false;
+          }
+          that.setData({
+            imgUrl: that.data.imgUrl
+          })
+        })
+      }
+    })
+  }
+  
+},
+//详情页上传图片
+uploadpic: function (e) {
+  var that = this;
+  app.b = 0
+  if (!wx.getStorageSync('userid')) {
+    wx.showModal({
+      title: "错误",
+      content: "获取用户授权信息失败！请稍后再试",
+      showCancel: false
+    })
+    return;
+  }
+  var e = e || event;
+  var selPic = e.currentTarget.dataset.pic
+  var typePic;
+  if (selPic == 'pai') {
+    typePic = 'camera';
+  } else {
+    typePic = 'album';
+  }
+  wx.chooseImage({
+    count: 9, // 默认9
+    sizeType: ['original'],
+    sourceType: [typePic],
+    success: function (res) {
+      var tempFilePaths = res.tempFilePaths
+      wx.setStorage({
+        key: 'uploadchoosedpic',
+        data: tempFilePaths,
+        success: function () {
+          that.setData({
+            pvShowModel: false
+          })
+          app.status = 1;
+          app.eid = wx.getStorageSync("groupid")
+          //选择完了之后先添加到页面然后立即上传
+          var temparr = []
+          tempFilePaths.forEach(val => {
+            var tempobj = {};
+            tempobj.thumbnail = val
+            temparr.push(tempobj)
+          })
+          console.log(temparr)
+          that.setData({
+            imgUrl: temparr.concat(that.data.imgUrl),
+            hastempcontent: temparr.length
+          })
+          // wx.showLoading({
+          //   title: '正在上传',
+          // })
+          that.uploadtemppic();
+          // wx.showLoading({
+          //   title: '正在上传',
+          // })
+          // wx.navigateTo({
+          //   url: '../../pages/uploadpic/uploadpic?from=details'
+          // })
+        },
+        fail: function () {
+          wx.showToast({
+            title: '保存图片临时数据失败',
           })
         }
       })
-},
 
+    }
+  })
+},
+// 详情页上传视频
+uploadvideo: function (e) {
+  var that = this;
+  app.b = 0
+  if (!wx.getStorageSync('userid')) {
+    wx.showModal({
+      title: '错误',
+      content: '获取用户授权信息失败！请稍后再试',
+      showCancel: false
+    })
+    return;
+  }
+  // that.hiddenlike();
+  var e = e || event;
+  var selVideo = e.currentTarget.dataset.video
+  var typeVideo;
+  if (selVideo == 'pai') {
+    typeVideo = 'camera';
+  } else {
+    typeVideo = 'album';
+  }
+  wx.chooseVideo({
+    sourceType: [typeVideo],
+    maxDuration: 60,
+    camera: 'back',
+    success: function (res) {
+      var tempFilePaths = res.tempFilePath;
+      wx.setStorage({
+        key: 'uploadchoosedvideo',
+        data: tempFilePaths,
+        success: function () {
+          that.setData({
+            pvShowModel: false
+          })
+          app.status = 1;
+          app.eid = wx.getStorageSync("groupid")
+          //选择完了之后先添加到页面然后立即上传
+          var temparr = []
+          var tempobj = {};
+          tempobj.thumbnail = "http://oibl5dyji.bkt.clouddn.com/20170927095849.png";
+          tempobj.myMain = 4
+          temparr.push(tempobj);
+          console.log(temparr)
+          that.setData({
+            imgUrl: temparr.concat(that.data.imgUrl),
+            hastempcontent: temparr.length,
+          })
+          // wx.showLoading({
+          //   title: '正在上传',
+          // })
+          that.uploadtempvideo();
+          // wx.showLoading({
+          //   title: '正在上传',
+          // })
+          that.setData({
+            hastempcontent: 0
+          })
+          // wx.navigateTo({
+          //   url: '/pages/uploadvideo/uploadvideo?from=details'
+          // })
+        },
+        fail: function () {
+          wx.showToast({
+            title: '保存视频临时数据失败',
+          })
+        }
+      })
+    }
+  })
+},
 //选择编辑照片
 select: function () {
     var that = this
@@ -1110,25 +1268,25 @@ select: function () {
       }
     }) 
     //获取权限
-    wx.getSetting({
-      success(res) {
-        if (!res['scope.writePhotosAlbum']) {
-          // 设置询问
-          wx.authorize({
-            scope: 'scope.writePhotosAlbum',
-            success(res) {
-              console.log(res)
+    // wx.getSetting({
+    //   success(res) {
+    //     if (!res['scope.writePhotosAlbum']) {
+    //       // 设置询问
+    //       wx.authorize({
+    //         scope: 'scope.writePhotosAlbum',
+    //         success(res) {
+    //           console.log(res)
           
-            },
-            fail() { return },
-            complete() { }
-          })
-        }
-      }
-    })
-    wx.showLoading({
-      title: '正在下载',
-    })
+    //         },
+    //         fail() { return },
+    //         complete() { }
+    //       })
+    //     }
+    //   }
+    // })
+    // wx.showLoading({
+    //   title: '正在下载',
+    // })
     // 下载图片函数
     that.downLoad()
   } ,
@@ -1294,6 +1452,54 @@ select: function () {
     console.log(arrpic);
     console.log(arrvideo);
     if (arrpic.length > 0) {
+        //查看授权状态；
+        wx.getSetting({
+          success(res) {
+            console.log(res);
+            if (!res.authSetting['scope.writePhotosAlbum']) {
+              console.log('authSetting');
+              wx.authorize({
+                scope: 'scope.writePhotosAlbum',
+                success(res) {
+                  console.log(res);
+                  // 用户已经同意小程序使用保存照片到手机的功能，后续调用 wx.saveImageToPhotosAlbum 接口不会弹窗询问
+                  that.setData({
+                         downloadprogressmengcen: true,
+                      })
+                },
+                fail: function (res) {
+                  //拒绝授权时会弹出提示框，提醒用户需要授权
+                  wx.showModal({
+                    title: '提示',
+                    content: '下载需要授权，是否去授权',
+                    success: function (res) {
+                    
+                      if (res.confirm) {
+                    
+                        wx.openSetting({
+                          success: function (res) {
+                            console.log(res);
+                          }
+                        })
+                      }
+                    }
+                  })
+                }
+              })
+            } else {
+              console.log("已经授权过了");
+              that.setData({
+                downloadprogressmengcen: true,
+              })
+              wx.showLoading({
+                title: '正在下载',
+              })
+              that.downLoadingpic(0, arrpic);//调用下载图片自调用函数
+
+            }
+          }
+        })
+
       // if (wx.canIUse("downloadTask.onProgressUpdate")) {
       //   for (var i = 0; i < tempArr.length; i++) {
       //     that.data.imgUrl[tempArr[i].idx].mengchen = true;
@@ -1302,16 +1508,54 @@ select: function () {
       //     picList: that.data.picList
       //   })
       // }
-      that.setData({
-        downloadprogressmengcen: true,
-      })
-      that.downLoadingpic(0, arrpic);//调用下载图片自调用函数
     } 
     if (arrvideo.length > 0) {
-      that.setData({
-        downloadprogressmengcen: true,
-      })
-      that.downLoadingvideo(0, arrvideo);//调用下载视频自调用函数
+        //查看授权状态；
+        wx.getSetting({
+          success(res) {
+            console.log(res);
+            if (!res.authSetting['scope.writePhotosAlbum']) {
+              console.log('authSetting');
+              wx.authorize({
+                scope: 'scope.writePhotosAlbum',
+                success(res) {
+                  console.log(res);
+                  // 用户已经同意小程序使用保存照片到手机的功能，后续调用 wx.saveImageToPhotosAlbum 接口不会弹窗询问
+                   that.setData({
+                      downloadprogressmengcen: true,
+                    })
+                },
+                fail: function (res) {
+                  //拒绝授权时会弹出提示框，提醒用户需要授权
+                  wx.showModal({
+                    title: '提示',
+                    content: '下载需要授权，是否去授权',
+                    success: function (res) {
+                      if (res.confirm) {
+                        
+                        wx.openSetting({
+                          success: function (res) {
+                            console.log(res);
+                          }
+                        })
+                      }
+                    }
+                  })
+                }
+              })
+            } else {
+              console.log("已经授权过了");
+              that.setData({
+                downloadprogressmengcen: true,
+              })
+              wx.showLoading({
+                title: '正在下载',
+              })
+              that.downLoadingvideo(0, arrvideo);//调用下载视频自调用函数
+            }
+          }
+        })
+    
     }
   },
 
@@ -1373,140 +1617,7 @@ select: function () {
   //   //   pvShowModel: true
   //   // })
   // },
-  //详情页上传图片
-  uploadpic: function (e) {
-    var that = this;
-    app.b = 0
-    if (!wx.getStorageSync('userid')) {
-      wx.showModal({
-        title: "错误",
-        content: "获取用户授权信息失败！请稍后再试",
-        showCancel: false
-      })
-      return;
-    }
-    var e = e || event;
-    var selPic = e.currentTarget.dataset.pic
-    var typePic;
-    if (selPic == 'pai') {
-      typePic = 'camera';
-    } else {
-      typePic = 'album';
-    }
-    wx.chooseImage({
-      count: 9, // 默认9
-      sizeType: ['original'],
-      sourceType: [typePic],
-      success: function (res) {
-        var tempFilePaths = res.tempFilePaths
-        wx.setStorage({
-          key: 'uploadchoosedpic',
-          data: tempFilePaths,
-          success: function () {
-            that.setData({
-              pvShowModel: false
-            })
-            //选择完了之后先添加到页面然后立即上传
-            var temparr =[]
-            tempFilePaths.forEach(val=>{
-              var tempobj={};
-              tempobj.thumbnail = val
-              temparr.push(tempobj)
-            })
-            console.log(temparr)
-            that.setData({
-              imgUrl: temparr.concat(that.data.imgUrl),
-              hastempcontent: temparr.length
-            })
-            wx.showLoading({
-              title: '正在上传',
-            })
-            that.uploadtemppic();
-            wx.showLoading({
-              title: '正在上传',
-            })
-            // wx.navigateTo({
-            //   url: '../../pages/uploadpic/uploadpic?from=details'
-            // })
-          },
-          fail: function () {
-            wx.showToast({
-              title: '保存图片临时数据失败',
-            })
-          }
-        })
-       
-      }
-    })
-  },
-  // 详情页上传视频
-  uploadvideo: function (e) {
-    var that = this;
-    app.b = 0
-    if (!wx.getStorageSync('userid')) {
-      wx.showModal({
-        title: '错误',
-        content: '获取用户授权信息失败！请稍后再试',
-        showCancel: false
-      })
-      return;
-    }
-    // that.hiddenlike();
-    var e = e || event;
-    var selVideo = e.currentTarget.dataset.video
-    var typeVideo;
-    if (selVideo == 'pai') {
-      typeVideo = 'camera';
-    } else {
-      typeVideo = 'album';
-    }
-    wx.chooseVideo({
-      sourceType: [typeVideo],
-      maxDuration: 60,
-      camera: 'back',
-      success: function (res) {
-        var tempFilePaths = res.tempFilePath;
-        wx.setStorage({
-          key: 'uploadchoosedvideo',
-          data: tempFilePaths,
-          success: function () { 
-            that.setData({
-              pvShowModel: false
-            })
-            //选择完了之后先添加到页面然后立即上传
-            var temparr = []
-            var tempobj = {};
-            tempobj.thumbnail = "http://oibl5dyji.bkt.clouddn.com/20170927095849.png";
-            tempobj.myMain = 4
-            temparr.push(tempobj);
-            console.log(temparr)
-            that.setData({
-              imgUrl: temparr.concat(that.data.imgUrl),
-              hastempcontent: temparr.length,
-            })
-            wx.showLoading({
-              title: '正在上传',
-            })
-            that.uploadtempvideo();
-            wx.showLoading({
-              title: '正在上传',
-            })
-            that.setData({
-              hastempcontent: 0
-            })
-            // wx.navigateTo({
-            //   url: '/pages/uploadvideo/uploadvideo?from=details'
-            // })
-          },
-          fail: function () {
-            wx.showToast({
-              title: '保存视频临时数据失败',
-            })
-          }
-        })
-      }
-    })
-  },
+
   // 关闭上传按钮
   closepvModel: function () {
     var that = this

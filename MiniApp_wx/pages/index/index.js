@@ -331,18 +331,19 @@ Page({
       fromIndex:"0"
     })
     console.log(e)
-    if (app.u == true) {
-      wx.showToast({
-        title: '正在上传中喔',
-        icon: 'loading'
-      })
-    }
-    else {
-      wx.setStorageSync("groupid", e.currentTarget.dataset.groupid)
+    app.status = 2
+    // if (app.u == true) {
+    //   wx.showToast({
+    //     title: '正在上传中喔',
+    //     icon: 'loading'
+    //   })
+    // }
+    // else {
+      // wx.setStorageSync("groupid", e.currentTarget.dataset.groupid)
       wx.navigateTo({
         url: '../details/details?groupid=' + e.currentTarget.dataset.groupid + "&from=index",
       })
-    }
+    // }
     
      
     
@@ -384,7 +385,6 @@ Page({
         pvShowModel: true
       })
     }
- 
     // console.log(wx.getStorageSync("NetworkType"))
     // if (wx.getStorageSync("NetworkType")=="all"){
     //   that.setData({
@@ -431,7 +431,6 @@ Page({
             that.setData({
               pvShowModel: false
             })
-            
             wx.setStorageSync("from", "index")
             wx.navigateTo({
               url: '../../pages/uploadpic/uploadpic?uploadtype=pic&from=index'

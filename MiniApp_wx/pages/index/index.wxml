@@ -167,7 +167,7 @@
 
   <view class='personalfoot'>
     <view class='personalcompany'>
-      <view>小影相V1.0版</view>
+      <view>小影相V1.1版</view>
       <view>分享精彩，留住感动</view>
     </view>
     <view catchtap='gotoindex' class='personalclose'>

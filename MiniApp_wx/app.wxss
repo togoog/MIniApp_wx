@@ -11,6 +11,7 @@
   top: 22rpx;
   background: #fff;
   transition: all 0.3s ease-out;
+  z-index: 10;
 }
 
 .home1 {

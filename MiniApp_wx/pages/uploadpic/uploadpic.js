@@ -402,7 +402,7 @@ Page({
           console.log(res);
           
           wx.setStorageSync("groupid", res.data.data[0].groupid)
-    
+          app.status = 1 
           wx.redirectTo({
               url: '../details/details?groupid=' + wx.getStorageSync("groupid"),
             })
@@ -475,6 +475,7 @@ Page({
 
       //     console.log(res);
           wx.getStorageSync("groupid")
+          app.status = 1 
           wx.redirectTo({
             url: '../details/details?groupid=' + wx.getStorageSync("groupid"),
           })
@@ -529,22 +530,6 @@ Page({
       // })
     }
   },
-  gotoDetail:function(){
-    // if (wx.getStorageSync("from")=="index"){
-    //   wx.redirectTo({
-    //     url: '../details/details?groupid=' + wx.getStorageSync("groupid"),
-    //   })
-    // }
-    // else{
-    //   wx.navigateBack({
-    //     url: '../details/details?groupid=' + wx.getStorageSync("groupid") ,
-    //   })
-    // }
-    wx.redirectTo({
-      url: '../details/details?groupid=' + wx.getStorageSync("groupid")+"&from=uploading",
-    })
-  },
-
    //单选
   selsectAlumb: function (e) {
     var that = this
@@ -597,10 +582,11 @@ Page({
       console.log(val.stage)
       tempSelectArr.push(val.stage)
     })
-    wx.setNavigationBarTitle({
-      title: '正在上传',
-    })
+    // wx.setNavigationBarTitle({
+    //   title: '正在上传',
+    // })
     console.log(tempSelectArr)
+    app.status = 1
     if (that.data.Cname == "") {
       wx.showModal({
         title: '提示',
@@ -618,6 +604,7 @@ Page({
       })
       // that.creategroup()
     }
+    
     // else if (wx.getStorageSync("uploadtype") == "pic") {
     //   wx.redirectTo({
     //     url: '../../pages/uploadpic/uploadpic'

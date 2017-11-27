@@ -267,12 +267,7 @@ Page({
       })
       // that.creategroup()
     }
-    // else if (wx.getStorageSync("uploadtype") == "pic") {
-    //   wx.redirectTo({
-    //     url: '../../pages/uploadpic/uploadpic'
-    //   })
-    // }
-
+ 
   },
 
 
@@ -303,213 +298,19 @@ Page({
         success: function (res) {
           console.log(res);
           wx.setStorageSync("groupid", res.data.data[0].groupid)
+          app.status = 1 
           wx.redirectTo({
             url: '../details/details?groupid=' + wx.getStorageSync("groupid"),
           })
-          // that.setData({
-          //   init: true,
-          //   hiddenprocess: false,
-          //   disabled: true,
-          //   gname:"未命名相册"
-          // })
-          // wx.request({
-          //   url: api.getUrl('YinianProject/yinian/GetPrivateSpaceUploadToken'),
-          //   data: {},
-          //   method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-          //   // header: {}, // 设置请求的 header
-          //   success: function (res) {
-          //     var token = res.data.data[0].token;
-          //     var val = that.data.choosevideo;
-          //     wx.uploadFile({
-          //       url: 'https://upload.qiniup.com',
-          //       filePath: val,
-          //       name: 'file',
-          //       formData: {
-          //         'key': val.split('//')[1],
-          //         'token': token
-          //       },
-          //       success: function (res) {
-          //         that.setData({
-          //           uploadnum: 1
-          //         })
-          //         var data = JSON.parse(res.data);
-          //         var address = data.key;
-          //         wx.request({
-          //           url: api.getUrl("YinianProject/event/UploadShortVideo"),
-          //           method: 'GET',
-          //           data: {
-          //             userid: wx.getStorageSync("userid"),
-          //             groupid: wx.getStorageSync('groupid'),
-          //             content: '',
-          //             address: address,
-          //             storage: 6000,
-          //             place: ''
-          //           },
-          //           success: function (res) {
-          //             console.log(res);
-          //             wx.showToast({
-          //               title: '上传完成',
-          //               icon: 'success',
-          //               duration: 2000
-          //             })
-          //             that.setData({
-          //               radioText: "上传完成",
-          //               methods: "gotoDetail",
-          //               disabled: false,
-          //             })
-
-                     
-          //             if (res.statusCode != 200) {
-          //               // wx.removeStorageSync('uploadchoosedvideo');
-          //               // wx.removeStorageSync('place');
-          //               wx.hideToast();
-          //               wx.showModal({
-          //                 title: '提示',
-          //                 content: '网络忙，请重试',
-          //                 showCancel: false,
-          //                 success: function (res) {
-          //                   if (res.confirm) {
-          //                     wx: wx.navigateBack({
-          //                       delta: 1,
-          //                     })
-          //                   }
-          //                 }
-          //               })
-          //               return;
-          //             }
-          //             // wx.hideToast();
-          //             console.log("上传视频成功");
-          //             app.a = 1;    
-          //             // wx.removeStorageSync('uploadchoosedvideo');
-          //             // wx.removeStorageSync('place');
-          //             // App.vedioData = res.data.data[0];
-          //             // wx.redirectTo({
-          //             //   url: '../commonpage/showvideoAfterupload/showvideoAfterupload'
-          //             // })
-          //           }
-          //         })
-          //       },
-          //       fail: function (res) {
-          //         console.log(res);
-          //       }
-          //     })
-          //   }
-          // })
         }
       })
     }
     else{
-      // wx.request({
-      //   url: api.getUrl('YinianProject/yinian/CreateAlbum'),
-      //   data: {
-      //     userid: wx.getStorageSync('userid'),
-      //     groupType: 4,
-      //     groupName: "未命名相册",
-      //     url: '',
-      //     source: '精简版小程序',
-      //     formID: formID
-      //   },
-      //   method: 'GET',
-      //   success: function (res) {
-
-      //     console.log(res);
       wx.getStorageSync("groupid")
+      app.status = 1 
         wx.redirectTo({
           url: '../details/details?groupid=' + wx.getStorageSync("groupid"),
         })
-      // that.setData({
-      //   init: true,
-      //   hiddenprocess: false,
-      //   disabled: true,
-      //   gname: wx.getStorageSync("gname")
-      // })
-      // wx.request({
-      //   url: api.getUrl('YinianProject/yinian/GetPrivateSpaceUploadToken'),
-      //   data: {},
-      //   method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
-      //   // header: {}, // 设置请求的 header
-      //   success: function (res) {
-      //     var token = res.data.data[0].token;
-      //     var val = that.data.choosevideo;
-      //     wx.uploadFile({
-      //       url: 'https://upload.qiniup.com',
-      //       filePath: val,
-      //       name: 'file',
-      //       formData: {
-      //         'key': val.split('//')[1],
-      //         'token': token
-      //       },
-      //       success: function (res) {
-      //         that.setData({
-      //           uploadnum: 1
-      //         })
-      //         var data = JSON.parse(res.data);
-      //         var address = data.key;
-      //         wx.request({
-      //           url: api.getUrl("YinianProject/event/UploadShortVideo"),
-      //           method: 'GET',
-      //           data: {
-      //             userid: wx.getStorageSync("userid"),
-      //             groupid: wx.getStorageSync('groupid'),
-      //             content: '',
-      //             address: address,
-      //             storage: 6000,
-      //             place: ''
-      //           },
-      //           success: function (res) {
-      //             console.log(res);
-      //             wx.showToast({
-      //               title: '上传完成',
-      //               icon: 'success',
-      //               duration: 2000
-      //             })
-      //             that.setData({
-      //               radioText: "上传完成",
-      //               methods: "gotoDetail",
-      //               disabled: false,
-      //             })
-      //             wx.setNavigationBarTitle({
-      //               title: '上传完成',
-      //             })
-      //             if (res.statusCode != 200) {
-      //               // wx.removeStorageSync('uploadchoosedvideo');
-      //               // wx.removeStorageSync('place');
-      //               wx.hideToast();
-      //               wx.showModal({
-      //                 title: '提示',
-      //                 content: '网络忙，请重试',
-      //                 showCancel: false,
-      //                 success: function (res) {
-      //                   if (res.confirm) {
-      //                     wx: wx.navigateBack({
-      //                       delta: 1,
-      //                     })
-      //                   }
-      //                 }
-      //               })
-      //               return;
-      //             }
-      //             // wx.hideToast();
-      //             app.a = 1
-      //             console.log("上传视频成功");
-        
-      //             // wx.removeStorageSync('uploadchoosedvideo');
-      //             // wx.removeStorageSync('place');
-      //             // App.vedioData = res.data.data[0];
-      //             // wx.redirectTo({
-      //             //   url: '../commonpage/showvideoAfterupload/showvideoAfterupload'
-      //             // })
-      //           }
-      //         })
-      //       },
-      //       fail: function (res) {
-      //         console.log(res);
-      //       }
-      //     })
-      //   }
-      // })
-
-      
     }
 
   },
@@ -525,8 +326,5 @@ Page({
       })
     }
   }
-
-
-
 
 })

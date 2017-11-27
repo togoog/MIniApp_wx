@@ -5,12 +5,10 @@
    "pages/grouplist/grouplist",
     "pages/choosealbum/choosealbum",
     "pages/share/share",
-    "pages/demo/demo",
     "pages/addset/addset",
     "pages/addmember/addmember",
    "pages/welfare/invitation/invitation",
     "pages/memberlist/memberlist",
-    
     "pages/details/details",
     "pages/uploadvideo/uploadvideo",
     "pages/authorization/authorization",

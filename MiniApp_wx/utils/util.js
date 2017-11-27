@@ -18,7 +18,7 @@ function reqest({pathname, data, reqtype}) {
   return new Promise((resolve, reject) => {
     wx.request({
       url: 'https://api.zhuiyinanian.com/' + pathname,
-      // url: 'http://192.168.31.59:8080/' + pathname,
+      // url: 'http://192.168.0.199:8080/' + pathname,
       data: data,
       method: reqtype || 'GET',
       success: function (res) {
