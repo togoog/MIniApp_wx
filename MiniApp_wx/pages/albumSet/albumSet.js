@@ -118,7 +118,7 @@ submitfun: function (e) {
         return;
       }
       wx.request({
-        url: api.getUrl('YinianProject/yinian/ModifyGroupName'),
+        url: api.getUrl(''),
         data: {
           groupid: wx.getStorageSync('groupid'),
           groupName: grouptitle,
@@ -185,7 +185,7 @@ leavegroup: function () {
           title: '正在退出',
         })
         wx.request({
-          url: api.getUrl('YinianProject/yinian/LeaveAlbum'),
+          url: api.getUrl(''),
           data: {
             userid: wx.getStorageSync('userid'),
             groupid: wx.getStorageSync('groupid'),
@@ -249,7 +249,7 @@ deletegroup: function () {
           title: '正在删除',
         })
         wx.request({
-          url: api.getUrl('YinianProject/yinian/DeleteGroup'),
+          url: api.getUrl(''),
           data: {
             userid: wx.getStorageSync('userid'),
             groupid: wx.getStorageSync('groupid'),
