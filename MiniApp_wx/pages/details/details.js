@@ -11,8 +11,8 @@ let formId = '';
 
 function nosearchtimefirstcheck(){
   wx.request({
-    url: "https://api.zhuiyinanian.com/YinianProject/simH5/GetGroupPhotoList",
-    // url:"http://192.168.199.204:8080/YinianProject/simH5/GetGroupPhotoList",
+    url: '',
+
     data: {
       userid: wx.getStorageSync("userid"),
       groupid: wx.getStorageSync("groupid"),
@@ -122,7 +122,7 @@ function uploadpicasync(a, b) {
 
     if (eplace == undefined || eplace == "不显示位置") eplace = '';
     wx.request({
-      url: api.getUrl("YinianProject/event/UploadEvent"),
+      url: api.getUrl(""),
       data: {
         userid: wx.getStorageSync("userid"),
         groupid: app.eid,
@@ -450,7 +450,7 @@ Page({
       if (that.shareUserid && that.shCode && showintroduce) {
         if (that.shCode == 'wx') {
           unit.wxreq({
-            pathname: 'YinianProject/activity/ReceiveEncourageReward',
+            pathname: '',
             data: {
               userid: that.shareUserid,
               type: 'shareToWechatGroup'
@@ -460,7 +460,7 @@ Page({
           })
         } else if (that.shCode == 'friend') {
           unit.wxreq({
-            pathname: 'YinianProject/activity/ReceiveEncourageReward',
+            pathname: '',
             data: {
               userid: that.shareUserid,
               type: 'shareToMoments'
@@ -480,7 +480,7 @@ Page({
       return;
       }
       unit.wxreq({
-        pathname: 'YinianProject/yinian/ShowSmallAppAlbumInformation',
+        pathname: '',
         data: {
           userid: wx.getStorageSync('userid'),
           groupid: wx.getStorageSync('groupid'),
@@ -652,8 +652,8 @@ Page({
           icon: 'loading',
         })
         wx.request({
-          url: "https://api.zhuiyinanian.com/YinianProject/simH5/GetGroupPhotoList",
-          // url: "http://192.168.199.204:8080/YinianProject/simH5/GetGroupPhotoList",
+          url: "",
+         
           data: {
             userid: wx.getStorageSync("userid"),
             groupid: wx.getStorageSync("groupid"),
@@ -707,8 +707,8 @@ Page({
           icon: 'loading',
         })
         wx.request({
-          url: "https://api.zhuiyinanian.com/YinianProject/simH5/GetGroupPhotoList",
-          // url: "http://192.168.199.204:8080/YinianProject/simH5/GetGroupPhotoList",
+          url: "",
+          
           data: {
             userid: wx.getStorageSync("userid"),
             groupid: wx.getStorageSync("groupid"),
@@ -781,7 +781,7 @@ uploadtemppic:function(){
           app.eid = wx.getStorageSync("groupid")
           // 获取图片上传token
           wx.request({
-            url: api.getUrl('YinianProject/yinian/GetPrivateSpaceUploadToken'),
+            url: api.getUrl(''),
             data: {},
             method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
             // header: {}, // 设置请求的 header
@@ -806,7 +806,7 @@ uploadtempvideo: function () {
     app.eid = wx.getStorageSync("groupid")
     // 获取上传token
     wx.request({
-      url: api.getUrl('YinianProject/yinian/GetPrivateSpaceUploadToken'),
+      url: api.getUrl(''),
       data: {},
       method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
       // header: {}, // 设置请求的 header
@@ -830,7 +830,7 @@ uploadtempvideo: function () {
             var data = JSON.parse(res.data);
             var address = data.key;
             wx.request({
-              url: api.getUrl("YinianProject/event/UploadShortVideo"),
+              url: api.getUrl(""),
               method: 'GET',
               data: {
                 userid: wx.getStorageSync("userid"),
@@ -1229,7 +1229,7 @@ select: function () {
     // console.log(shareUrl)
     // wx.setStorageSync("shareUrl", shareUrl)
       wx.request({
-        url: "https://api.zhuiyinanian.com/YinianProject/simH5/shareImgOrMV",
+        url: "",
         data: {
           ids: shareUrl,
           userid: wx.getStorageSync("userid")
@@ -1642,8 +1642,8 @@ select: function () {
       icon: 'loading',
     })
     wx.request({
-      url: "https://api.zhuiyinanian.com/YinianProject/simH5/GetGroupPhotoList",
-      // url: "http://192.168.199.204:8080/YinianProject/simH5/GetGroupPhotoList",
+      url: "",
+   
       data: {
         userid: wx.getStorageSync("userid"),
         groupid: wx.getStorageSync("groupid"),
@@ -1703,8 +1703,8 @@ desc:function(){
   })
   // 没有查询时间时候
     wx.request({
-      url: "https://api.zhuiyinanian.com/YinianProject/simH5/GetGroupPhotoList",
-      // url: "http://192.168.199.204:8080/YinianProject/simH5/GetGroupPhotoList",
+      url: "",
+     
       data: {
         userid: wx.getStorageSync("userid"),
         groupid: wx.getStorageSync("groupid"),
@@ -1786,8 +1786,8 @@ bindDateChange: function (e) {
     icon: 'loading',
   })
   wx.request({
-    url: "https://api.zhuiyinanian.com/YinianProject/simH5/GetGroupPhotoList",
-    // url: "http://192.168.199.204:8080/YinianProject/simH5/GetGroupPhotoList",
+    url: "",
+   
     data: {
         userid: wx.getStorageSync("userid"),
         groupid: wx.getStorageSync("groupid"),
@@ -1847,8 +1847,8 @@ bindDateChange: function (e) {
       icon: 'loading',
     })
     wx.request({
-      url: "https://api.zhuiyinanian.com/YinianProject/simH5/GetGroupPhotoList",
-      // url: "http://192.168.199.204:8080/YinianProject/simH5/GetGroupPhotoList",
+      url: "",
+   
       data: {
         userid: wx.getStorageSync("userid"),
         groupid: wx.getStorageSync("groupid"),
@@ -1935,7 +1935,7 @@ submitfun: function (e) {
       return;
     }
     wx.request({
-      url: api.getUrl('YinianProject/yinian/ModifyGroupName'),
+      url: api.getUrl(''),
       data: {
         groupid: wx.getStorageSync('groupid'),
         groupName: grouptitle,
@@ -2022,7 +2022,7 @@ del:function(){
         })
         var num = 0
         wx.request({
-          url: "https://api.zhuiyinanian.com/YinianProject/simH5/deletePic",
+          url: "",
           data:{
             userid: wx.getStorageSync("userid"),
             pid: delPid.join(",")
