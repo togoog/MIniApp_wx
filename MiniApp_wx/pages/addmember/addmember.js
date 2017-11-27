@@ -35,7 +35,7 @@ Page({
       // 大于100人
       var createList = [], selectList = [], restList = [], searchList = [];
       util.wxreq({
-        pathname: 'YinianProject/yinian/ShowInfo',
+        pathname: '',
         data: {
           userid: wx.getStorageSync('createrid'),
         }
@@ -51,7 +51,7 @@ Page({
         })
       })
       util.wxreq({
-        pathname: 'YinianProject/space/GetSpaceMemberAuthorityList',
+        pathname: '',
         data: {
           groupid: wx.getStorageSync('groupid'),
           type: 'bigger'
@@ -92,7 +92,7 @@ Page({
       // 小于100人
       var createList = [], selectList = [], restList = [];
       util.wxreq({
-        pathname: 'YinianProject/space/GetSpaceMemberAuthorityList',
+        pathname: '',
         data: {
           groupid: wx.getStorageSync('groupid'),
           type: 'smaller'
@@ -168,7 +168,7 @@ Page({
       mask: true
     })
     util.wxreq({
-      pathname: 'YinianProject/space/SearchSpaceMembers',
+      pathname: '',
       data: {
         groupid: wx.getStorageSync('groupid'),
         name: searchText
@@ -311,7 +311,7 @@ Page({
       })
       if (arr2.length > 0) {
         util.wxreq({
-          pathname: 'YinianProject/space/SetUploadAuthority',
+          pathname: '',
           data: {
             groupid: wx.getStorageSync('groupid'),
             userid: arr2.join(','),
@@ -337,7 +337,7 @@ Page({
       arr1.push(wx.getStorageSync('createrid'));
       if (arr1.length > 0) {
         util.wxreq({
-          pathname: 'YinianProject/space/SetUploadAuthority',
+          pathname: '',
           data: {
             groupid: wx.getStorageSync('groupid'),
             userid: arr1.join(','),
