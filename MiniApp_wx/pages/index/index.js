@@ -173,7 +173,7 @@ Page({
       if (that.shareUserid && that.shCode && showintroduce) {
         if (that.shCode == 'wx') {
           unit.wxreq({
-            pathname: 'YinianProject/activity/ReceiveEncourageReward',
+            pathname: '',
             data: {
               userid: that.shareUserid,
               type: 'shareToWechatGroup'
@@ -183,7 +183,7 @@ Page({
           })
         } else if (that.shCode == 'friend') {
           unit.wxreq({
-            pathname: 'YinianProject/activity/ReceiveEncourageReward',
+            pathname: '',
             data: {
               userid: that.shareUserid,
               type: 'shareToMoments'
@@ -195,7 +195,7 @@ Page({
       }
 
       wx.request({
-        url: "https://api.zhuiyinanian.com/YinianProject/yinian/GetUserData",
+        url: "",
         data: {
           userid: wx.getStorageSync("userid")
         },
@@ -284,7 +284,7 @@ Page({
     }
     var that = this;
     unit.wxreq({
-      pathname: 'YinianProject/simH5/ShowGroupWithTop',
+      pathname: '',
       data: { userid: app.globalData.userInfo.userid }
     }).then(res => {
       console.log(res)
@@ -577,7 +577,7 @@ Page({
   // 跳转另一个小程序
   toAnotherApp: function () {
     wx.navigateToMiniProgram({
-      appId: 'wx48b3b26e45ad2e2e',
+      appId: '',
       path: 'pages/index/index',
       success(res) {
         // 打开成功
@@ -642,7 +642,7 @@ Page({
         return;
       }
       wx.request({
-        url: api.getUrl('YinianProject/yinian/ModifyGroupName'),
+        url: api.getUrl(''),
         data: {
           groupid: wx.getStorageSync('groupid'),
           groupName: grouptitle,
@@ -692,7 +692,7 @@ Page({
         if (!res.confirm) return;
         var isTopStr = isTopState ? "no" : "yes";
         wx.request({
-          url: 'https://api.zhuiyinanian.com/YinianProject/yinian/SetGroupIsTop',
+          url: '',
           data: {
             userid: wx.getStorageSync('userid'),
             groupid: tempList.groupid,
