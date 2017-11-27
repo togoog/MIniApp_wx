@@ -32,7 +32,7 @@ Page({
     }
     var uCreateList = [], uAddList = []
     unit.wxreq({
-      pathname: 'YinianProject/yinian/ShowGroup',
+      pathname: '',
       data: { userid: wx.getStorageSync('userid') }
     }).then(res=>{
       if(res.code == 0){
