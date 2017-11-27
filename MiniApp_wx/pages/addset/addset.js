@@ -94,7 +94,7 @@ Page({
     }
     var  authorityType = this.data.allState ? "all" : "onlyCreator" ;
     util.wxreq({
-      pathname: 'YinianProject/space/SetUploadAuthority',
+      pathname: '',
       data: {
         userid: wx.getStorageSync('userid'),
         groupid: wx.getStorageSync('groupid'),
