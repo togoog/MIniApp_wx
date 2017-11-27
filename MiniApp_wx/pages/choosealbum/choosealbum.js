@@ -54,7 +54,7 @@ Page({
   onShow: function () {
     var that = this
     wx.request({
-      url: "https://api.zhuiyinanian.com/YinianProject/simH5/GetSynchronizeSpaceList",
+      url: "",
       data: {
         userid: wx.getStorageSync('userid')
       },
@@ -192,7 +192,7 @@ Page({
     console.log(formID);
     if (wx.getStorageSync("groupid") == "") {
       wx.request({
-        url: api.getUrl('YinianProject/yinian/CreateAlbum'),
+        url: api.getUrl(''),
         data: {
           userid: wx.getStorageSync('userid'),
           groupType: 4,
@@ -242,7 +242,7 @@ Page({
           })
           // 获取图片上传token
           wx.request({
-            url: api.getUrl('YinianProject/yinian/GetPrivateSpaceUploadToken'),
+            url: api.getUrl(''),
             data: {},
             method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
             // header: {}, // 设置请求的 header
@@ -258,7 +258,7 @@ Page({
     }
     else {
       // wx.request({
-      //   url: api.getUrl('YinianProject/yinian/CreateAlbum'),
+      //   url: api.getUrl(''),
       //   data: {
       //     userid: wx.getStorageSync('userid'),
       //     groupType: 4,
@@ -308,7 +308,7 @@ Page({
       })
       // 获取图片上传token
       wx.request({
-        url: api.getUrl('YinianProject/yinian/GetPrivateSpaceUploadToken'),
+        url: api.getUrl(''),
         data: {},
         method: 'GET', // OPTIONS, GET, HEAD, POST, PUT, DELETE, TRACE, CONNECT
         // header: {}, // 设置请求的 header
