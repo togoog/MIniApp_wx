@@ -31,7 +31,7 @@ Page({
   signBtn:function(){
     var that=this;
     util.wxreq({
-      pathname: 'YinianProject/activity/DailySignIn',
+      pathname: '',
       data: {
         userid: that.userid
       }
@@ -56,7 +56,7 @@ conversion:function(num){
 updatePage:function(){
   var that=this;
   util.wxreq({
-    pathname: 'YinianProject/activity/ShowWelfarePage',
+    pathname: '',
     data: {
       userid: that.userid
     },
