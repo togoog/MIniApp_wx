@@ -89,7 +89,7 @@ Page({
     // }
 
     wx.request({
-      url: "https://api.zhuiyinanian.com/YinianProject/simH5/GetSynchronizeSpaceList",
+      url: "",
       data: {
         userid: wx.getStorageSync('userid')
       },
@@ -285,7 +285,7 @@ Page({
     ////
     if (wx.getStorageSync("groupid") == "") {
       wx.request({
-        url: api.getUrl('YinianProject/yinian/CreateAlbum'),
+        url: api.getUrl(''),
         data: {
           userid: wx.getStorageSync('userid'),
           groupType: 4,
