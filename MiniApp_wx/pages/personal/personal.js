@@ -39,7 +39,7 @@ Page({
     }
    
     wx.request({
-      url: "https://api.zhuiyinanian.com/YinianProject/yinian/GetUserData",
+      url: "",
       data: {
         userid: wx.getStorageSync("userid")
       },
@@ -76,7 +76,7 @@ Page({
     // 跳转另一个小程序
   toAnotherApp: function () {
     wx.navigateToMiniProgram({
-      appId: 'wx48b3b26e45ad2e2e',
+      appId: '',
       path: 'pages/index/index',
       success(res) {
         // 打开成功
