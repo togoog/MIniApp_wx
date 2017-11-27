@@ -79,7 +79,7 @@ Page({
       }
 
       util.wxreq({
-        pathname: 'YinianProject/activity/GetQRCode',
+        pathname: '',
         data: {
           userid: that.userid,
           shCode: 'yaoqin'
